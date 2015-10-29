@@ -1,0 +1,33 @@
+Thu Oct 29 09:07:00 EDT 2015 INFO: Thread #1 CREATED account for Alex
+Thu Oct 29 09:07:00 EDT 2015 INFO: new account created for Alex (account #2)
+Thu Oct 29 09:07:00 EDT 2015 INFO: Thread #1 CREATED account for Justin
+Thu Oct 29 09:07:00 EDT 2015 INFO: new account created for Justin (account #3)
+Thu Oct 29 09:07:00 EDT 2015 INFO: Thread #1 CREATED account for Maria
+Thu Oct 29 09:07:00 EDT 2015 INFO: new account created for Maria (account #4)
+Thu Oct 29 09:07:00 EDT 2015 INFO: Thread #1 CREATED account for Max
+Thu Oct 29 09:07:00 EDT 2015 INFO: new account created for Max (account #5)
+Thu Oct 29 09:07:00 EDT 2015 INFO: Dominion Server is up and running on port 4244!
+Thu Oct 29 09:07:00 EDT 2015 INFO: No customer found for this username dummy@dummy.com
+Thu Oct 29 09:07:00 EDT 2015 INFO: 4 - 4 - Maria - Etinger - Dominion - maria.etinger@gmail.com
+Thu Oct 29 09:07:00 EDT 2015 INFO: 3 - 3 - Justin - Paquette - Dominion - justin.paquette@gmail.com
+Thu Oct 29 09:07:00 EDT 2015 INFO: 2 - 2 - Alex - Emond - Dominion - alex.emond@gmail.com
+Thu Oct 29 09:07:00 EDT 2015 INFO: Alex has no loans currently
+Thu Oct 29 09:07:00 EDT 2015 INFO: Thread #16 CREATED account for Concurrent2
+Thu Oct 29 09:07:00 EDT 2015 INFO: new account created for Concurrent2 (account #7)
+Thu Oct 29 09:07:00 EDT 2015 INFO: Thread #17 CREATED account for Concurrent3
+Thu Oct 29 09:07:00 EDT 2015 INFO: new account created for Concurrent3 (account #8)
+Thu Oct 29 09:07:00 EDT 2015 INFO: Thread #18 CREATED account for Concurrent4
+Thu Oct 29 09:07:00 EDT 2015 INFO: new account created for Concurrent4 (account #9)
+Thu Oct 29 09:07:00 EDT 2015 INFO: Thread #19 CREATED account for Concurrent5
+Thu Oct 29 09:07:00 EDT 2015 INFO: new account created for Concurrent5 (account #10)
+Thu Oct 29 09:07:00 EDT 2015 INFO: Thread #20 CREATED account for Concurrent6
+Thu Oct 29 09:07:00 EDT 2015 INFO: new account created for Concurrent6 (account #11)
+Thu Oct 29 09:07:00 EDT 2015 INFO: Thread #21 CREATED account for Concurrent7
+Thu Oct 29 09:07:00 EDT 2015 INFO: new account created for Concurrent7 (account #12)
+Thu Oct 29 09:07:00 EDT 2015 INFO: Thread #22 CREATED account for Concurrent8
+Thu Oct 29 09:07:00 EDT 2015 INFO: new account created for Concurrent8 (account #13)
+Thu Oct 29 09:07:00 EDT 2015 INFO: Server returned 11 customers info
+Thu Oct 29 09:07:00 EDT 2015 INFO: Due date for loan #2 changed to 18-12-2016
+Thu Oct 29 09:07:03 EDT 2015 INFO: Thread #15 CREATED account for Concurrent1
+Thu Oct 29 09:07:03 EDT 2015 INFO: new account created for Concurrent1 (account #6)
+Thu Oct 29 09:07:03 EDT 2015 INFO: This Account already exists for Concurrent1
