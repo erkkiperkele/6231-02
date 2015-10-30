@@ -1,9 +1,10 @@
-package Transport.RMI;
+package Transport;
 
 import Contracts.IManagerServer;
 import Data.Bank;
 import Data.CustomerInfo;
 import Data.ServerPorts;
+import Transport.RMI.RecordNotFoundException;
 
 import javax.security.auth.login.FailedLoginException;
 import java.net.MalformedURLException;

@@ -1,11 +1,13 @@
 package Services;
 
 
+import Contracts.ICustomerServer;
 import Contracts.ICustomerService;
 import Data.Bank;
 import Data.Customer;
 import Data.Loan;
-import Transport.RMI.CustomerRMIClient;
+import Transport.BankClientCorba;
+import Transport.CustomerRMIClient;
 
 import javax.security.auth.login.FailedLoginException;
 import java.rmi.RemoteException;
@@ -16,17 +18,25 @@ import java.rmi.RemoteException;
  */
 public class CustomerService implements ICustomerService {
 
-    private CustomerRMIClient[] clients;
+    private ICustomerServer[] clients;
 
     public CustomerService() {
-        initializeClients();
+//        initializeRMIClients();
+        initializeCorbaClients();
     }
 
-    private void initializeClients() {
+    private void initializeRMIClients() {
         this.clients = new CustomerRMIClient[3];
         this.clients[Bank.Royal.toInt() - 1] = new CustomerRMIClient(Bank.Royal);
         this.clients[Bank.National.toInt() - 1] = new CustomerRMIClient(Bank.National);
         this.clients[Bank.Dominion.toInt() - 1] = new CustomerRMIClient(Bank.Dominion);
+    }
+
+    private void initializeCorbaClients() {
+        this.clients = new BankClientCorba[3];
+        this.clients[Bank.Royal.toInt() - 1] = new BankClientCorba(Bank.Royal);
+        this.clients[Bank.National.toInt() - 1] = new BankClientCorba(Bank.National);
+        this.clients[Bank.Dominion.toInt() - 1] = new BankClientCorba(Bank.Dominion);
     }
 
     @Override
@@ -40,7 +50,7 @@ public class CustomerService implements ICustomerService {
 
         try {
 
-            CustomerRMIClient client = this.clients[bank.toInt() - 1];
+            ICustomerServer client = this.clients[bank.toInt() - 1];
             int accountNumber = client.openAccount(bank, firstName, lastName, emailAddress, phoneNumber, password);
             return accountNumber;
 

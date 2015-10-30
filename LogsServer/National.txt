@@ -181,3 +181,28 @@ Thu Oct 29 21:35:38 EDT 2015 INFO: new account created for Maria (account #4)
 Thu Oct 29 21:35:38 EDT 2015 INFO: Thread #1 CREATED account for Pascal
 Thu Oct 29 21:35:38 EDT 2015 INFO: new account created for Pascal (account #5)
 Thu Oct 29 21:35:38 EDT 2015 INFO: National Server is up and running on port 4243!
+Thu Oct 29 21:38:48 EDT 2015 INFO: Thread #1 CREATED account for Alex
+Thu Oct 29 21:38:48 EDT 2015 INFO: new account created for Alex (account #2)
+Thu Oct 29 21:38:48 EDT 2015 INFO: Thread #1 CREATED account for Justin
+Thu Oct 29 21:38:48 EDT 2015 INFO: new account created for Justin (account #3)
+Thu Oct 29 21:38:48 EDT 2015 INFO: Thread #1 CREATED account for Maria
+Thu Oct 29 21:38:48 EDT 2015 INFO: new account created for Maria (account #4)
+Thu Oct 29 21:38:48 EDT 2015 INFO: Thread #1 CREATED account for Pascal
+Thu Oct 29 21:38:48 EDT 2015 INFO: new account created for Pascal (account #5)
+Thu Oct 29 21:38:49 EDT 2015 INFO: National Server is up and running on port 4243!
+Fri Oct 30 08:04:10 EDT 2015 INFO: Thread #1 CREATED account for Alex
+Fri Oct 30 08:04:10 EDT 2015 INFO: new account created for Alex (account #2)
+Fri Oct 30 08:04:10 EDT 2015 INFO: Thread #1 CREATED account for Justin
+Fri Oct 30 08:04:10 EDT 2015 INFO: new account created for Justin (account #3)
+Fri Oct 30 08:04:10 EDT 2015 INFO: Thread #1 CREATED account for Maria
+Fri Oct 30 08:04:10 EDT 2015 INFO: new account created for Maria (account #4)
+Fri Oct 30 08:04:10 EDT 2015 INFO: Thread #1 CREATED account for Pascal
+Fri Oct 30 08:04:10 EDT 2015 INFO: new account created for Pascal (account #5)
+Fri Oct 30 08:07:58 EDT 2015 INFO: Thread #1 CREATED account for Alex
+Fri Oct 30 08:07:58 EDT 2015 INFO: new account created for Alex (account #2)
+Fri Oct 30 08:07:58 EDT 2015 INFO: Thread #1 CREATED account for Justin
+Fri Oct 30 08:07:58 EDT 2015 INFO: new account created for Justin (account #3)
+Fri Oct 30 08:07:58 EDT 2015 INFO: Thread #1 CREATED account for Maria
+Fri Oct 30 08:07:58 EDT 2015 INFO: new account created for Maria (account #4)
+Fri Oct 30 08:07:58 EDT 2015 INFO: Thread #1 CREATED account for Pascal
+Fri Oct 30 08:07:58 EDT 2015 INFO: new account created for Pascal (account #5)

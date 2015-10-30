@@ -1,4 +1,4 @@
-package Transport.RMI;
+package Transport;
 
 import Contracts.ICustomerServer;
 import Data.Bank;

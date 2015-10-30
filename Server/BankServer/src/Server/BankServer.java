@@ -1,18 +1,21 @@
 package Server;
 
-import Contracts.*;
-import Data.*;
+import Contracts.IBankService;
+import Data.Bank;
+import Data.ServerPorts;
 import Services.BankService;
 import Services.SessionService;
-import Transport.RMI.RecordNotFoundException;
+import org.omg.CORBA.ORB;
+import org.omg.CORBA.ORBPackage.InvalidName;
+import org.omg.PortableServer.POA;
+import org.omg.PortableServer.POAHelper;
+import org.omg.PortableServer.POAManagerPackage.AdapterInactive;
+import org.omg.PortableServer.POAPackage.ObjectNotActive;
+import org.omg.PortableServer.POAPackage.ServantAlreadyActive;
+import org.omg.PortableServer.POAPackage.WrongPolicy;
 
-import javax.security.auth.login.FailedLoginException;
-import java.rmi.Remote;
-import java.rmi.RemoteException;
-import java.rmi.registry.LocateRegistry;
-import java.rmi.registry.Registry;
-import java.rmi.server.UnicastRemoteObject;
-import java.util.Date;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 
 /**
  * This class starts both RMI and UDP servers for a given bank.
@@ -20,14 +23,10 @@ import java.util.Date;
  */
 public class BankServer {
 
-    private static int serverPort;
     private static IBankService bankService;
 
     private static UDPServer udp;
 
-    public BankServer(int serverPort) {
-        this.serverPort = serverPort;
-    }
 
     /**
      * Instatiates and starts the RMI and UDP servers.
@@ -42,8 +41,9 @@ public class BankServer {
         initialize(serverArg);
 
         //Starting bank server
-        startRMIServer();
-        startUDPServer();
+//        startRMIServer();
+//        startUDPServer();
+        startCorbaServer();
     }
 
     private static void initialize(String arg) {
@@ -77,6 +77,44 @@ public class BankServer {
             udp.startServer();
         });
         startUdpServer.start();
+    }
+
+    public static void startCorbaServer() {
+
+        try {
+            String[] args = new String[]{};
+            ORB orb = ORB.init(args, null);
+            POA rootPOA = POAHelper.narrow(orb.resolve_initial_references("RootPOA"));
+
+            //Obtain a reference
+            BankServerCorba bankServerCorba = new BankServerCorba();
+            byte[] id = rootPOA.activate_object(bankServerCorba);
+            org.omg.CORBA.Object ref = rootPOA.id_to_reference(id);
+
+            //Translate to ior and write it to a file
+            String ior = orb.object_to_string(ref);
+            System.out.println(ior);
+
+            PrintWriter file = new PrintWriter("ior.txt");
+            file.println(ior);
+            file.close();
+
+            //initialize the ORB
+            rootPOA.the_POAManager().activate();
+            orb.run();
+        } catch (WrongPolicy wrongPolicy) {
+            wrongPolicy.printStackTrace();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (InvalidName invalidName) {
+            invalidName.printStackTrace();
+        } catch (ServantAlreadyActive servantAlreadyActive) {
+            servantAlreadyActive.printStackTrace();
+        } catch (ObjectNotActive objectNotActive) {
+            objectNotActive.printStackTrace();
+        } catch (AdapterInactive adapterInactive) {
+            adapterInactive.printStackTrace();
+        }
     }
 
 

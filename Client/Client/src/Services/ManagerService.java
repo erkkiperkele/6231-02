@@ -4,7 +4,7 @@ import Contracts.IManagerService;
 import Data.Bank;
 import Data.Customer;
 import Data.CustomerInfo;
-import Transport.RMI.ManagerRMIClient;
+import Transport.ManagerRMIClient;
 import Transport.RMI.RecordNotFoundException;
 
 import javax.security.auth.login.FailedLoginException;

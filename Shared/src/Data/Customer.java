@@ -13,6 +13,7 @@ public class Customer implements Serializable {
 
     private int accountNumber;
     private String password;
+    private String email;
 
     public String getEmail() {
 
@@ -24,7 +25,6 @@ public class Customer implements Serializable {
         return email.toLowerCase();
     }
 
-    private String email;
 
     public int getAccountNumber() {
 

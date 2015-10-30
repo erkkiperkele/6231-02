@@ -1,8 +1,6 @@
 package Services;
 
 import Contracts.IBankService;
-import Contracts.ICustomerService;
-import Contracts.IManagerService;
 import Data.*;
 import Transport.RMI.RecordNotFoundException;
 import Transport.UDP.GetLoanMessage;
