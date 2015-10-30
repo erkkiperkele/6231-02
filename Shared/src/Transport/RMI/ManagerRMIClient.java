@@ -4,7 +4,6 @@ import Contracts.IManagerServer;
 import Data.Bank;
 import Data.CustomerInfo;
 import Data.ServerPorts;
-import Server.BankServer;
 
 import javax.security.auth.login.FailedLoginException;
 import java.net.MalformedURLException;
@@ -26,7 +25,7 @@ public class ManagerRMIClient implements IManagerServer {
         System.setProperty("java.security.policy", this.policyPath);
 
         int serverPort = ServerPorts.getRMIPort(bank);
-        this.server = new BankServer(serverPort);
+        this.server = null;
 
         try {
             String serverUrl = String.format("rmi://localhost:%d/manager", ServerPorts.CustomerRMI.getRMIPort());

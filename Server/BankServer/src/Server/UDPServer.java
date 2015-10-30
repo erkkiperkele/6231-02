@@ -1,10 +1,12 @@
-package Transport.UDP;
+package Server;
 
 import Contracts.ICustomerService;
 import Data.Account;
 import Data.Loan;
 import Data.ServerPorts;
 import Services.SessionService;
+import Transport.UDP.GetLoanMessage;
+import Transport.UDP.Serializer;
 
 import java.io.IOException;
 import java.net.DatagramPacket;

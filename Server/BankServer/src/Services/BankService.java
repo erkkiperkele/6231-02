@@ -1,5 +1,6 @@
 package Services;
 
+import Contracts.IBankService;
 import Contracts.ICustomerService;
 import Contracts.IManagerService;
 import Data.*;
@@ -18,7 +19,7 @@ import java.util.List;
  * The bank service provides an implementation for both the customer and manager services.
  * (See interface documentation for details on the functionality provided by both those services)
  */
-public class BankService implements ICustomerService, IManagerService {
+public class BankService implements IBankService{
 
     private DataRepository repository;
     private UDPClient udp;
