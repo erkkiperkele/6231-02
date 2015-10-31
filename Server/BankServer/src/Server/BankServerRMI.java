@@ -67,7 +67,7 @@ public class BankServerRMI implements ICustomerRMIServer, IManagerRMIServer {
 
     @Override
     public Customer signIn(Bank bank, String email, String password) throws RemoteException, FailedLoginException {
-        return getCustomer(bank, email, password);
+            return getCustomer(bank, email, password);
     }
 
     @Override

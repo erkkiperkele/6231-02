@@ -2,12 +2,16 @@ package Server;
 
 
 import Contracts.IBankService;
+import Data.CustomerInfo;
 import Transport.Corba.BankServerPackage.Bank;
 import Transport.Corba.BankServerPackage.Customer;
 import Transport.Corba.BankServerPackage.Date;
 import Transport.Corba.BankServerPackage.Loan;
 import Transport.Corba.Helpers.ObjectMapper;
 import Transport.Corba.LoanManager.BankServerPOA;
+import Transport.RMI.RecordNotFoundException;
+
+import javax.security.auth.login.FailedLoginException;
 
 public class BankServerCorba extends BankServerPOA{
 
@@ -41,21 +45,46 @@ public class BankServerCorba extends BankServerPOA{
 
 	@Override
 	public Customer signIn(Bank bank, String email, String password) {
-		return null;
-	}
+
+        return getCustomer(bank, email, password);
+    }
 
 	@Override
-	public Loan getLoan(Bank bankId, short accountNumber, String password, int loanAmount) {
-		return null;
+	public Loan getLoan(Bank bank, short accountNumber, String password, int loanAmount) {
+
+        Data.Bank serverBank = ObjectMapper.toBank(bank);
+        Data.Loan serverLoan = null;
+        try {
+            serverLoan = bankService.getLoan(serverBank, accountNumber, password, loanAmount);
+        } catch (FailedLoginException e) {
+            e.printStackTrace();
+        }
+        return ObjectMapper.toCorbaLoan(serverLoan);
 	}
 
 	@Override
 	public void delayPayment(Bank bank, short loanID, Date currentDueDate, Date newDueDate) {
 
-	}
+        Data.Bank serverBank = ObjectMapper.toBank(bank);
+        java.util.Date serverCurrentDueDate = ObjectMapper.toDate(currentDueDate);
+        java.util.Date serverNewDueDate = ObjectMapper.toDate(newDueDate);
+        try {
+            bankService.delayPayment(serverBank, (int)loanID, serverCurrentDueDate, serverNewDueDate);
+        } catch (RecordNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
 
 	@Override
 	public String getCustomersInfo(Bank bank) {
-		return null;
-	}
+
+        Data.Bank serverBank = ObjectMapper.toBank(bank);
+        CustomerInfo[] customersInfo = new CustomerInfo[0];
+        try {
+            customersInfo = bankService.getCustomersInfo(serverBank);
+        } catch (FailedLoginException e) {
+            e.printStackTrace();
+        }
+        return ObjectMapper.toCorbaCustomersInfo(customersInfo);
+    }
 }

@@ -4,11 +4,11 @@ import Contracts.IManagerService;
 import Data.Bank;
 import Data.Customer;
 import Data.CustomerInfo;
-import Transport.ManagerRMIClient;
+import Transport.BankClientCorba;
 import Transport.RMI.RecordNotFoundException;
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import javax.security.auth.login.FailedLoginException;
-import java.rmi.RemoteException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -21,17 +21,17 @@ import java.util.Date;
 public class ManagerService implements IManagerService {
 
 
-    private ManagerRMIClient[] clients;
+    private BankClientCorba[] clients;
 
     public ManagerService() {
         initializeClients();
     }
 
     private void initializeClients() {
-        this.clients = new ManagerRMIClient[3];
-        this.clients[Bank.Royal.toInt() - 1] = new ManagerRMIClient(Bank.Royal);
-        this.clients[Bank.National.toInt() - 1] = new ManagerRMIClient(Bank.National);
-        this.clients[Bank.Dominion.toInt() - 1] = new ManagerRMIClient(Bank.Dominion);
+        this.clients = new BankClientCorba[3];
+        this.clients[Bank.Royal.toInt() - 1] = new BankClientCorba(Bank.Royal);
+        this.clients[Bank.National.toInt() - 1] = new BankClientCorba(Bank.National);
+        this.clients[Bank.Dominion.toInt() - 1] = new BankClientCorba(Bank.Dominion);
     }
 
     @Override
@@ -72,8 +72,6 @@ public class ManagerService implements IManagerService {
                             dateFormat.format(newDueDate))
             );
 
-        } catch (RemoteException e) {
-            e.printStackTrace();
         } catch (RecordNotFoundException e) {
             SessionService.getInstance().log().warn(
                     String.format("Loan #%d not found at bank: %s.", loanId, bank)
@@ -81,13 +79,22 @@ public class ManagerService implements IManagerService {
         }
     }
 
+    /**
+     * Implemented in RMI only. With Corba use the getCustomersInfoMessage.
+     * REFACTOR: Corba should implement this interface.
+     * @param bank
+     * @return
+     */
     @Override
     public CustomerInfo[] getCustomersInfo(Bank bank) {
-        CustomerInfo[] infos = null;
+        throw new NotImplementedException();
+    }
+
+    @Override
+    public String getCustomersInfoMessage(Bank bank) {
+        String infos = null;
         try {
-            infos = this.clients[bank.toInt() - 1].getCustomersInfo(bank);
-        } catch (RemoteException e) {
-            e.printStackTrace();
+            infos = this.clients[bank.toInt() - 1].getCustomersInfoMessage(bank);
         } catch (FailedLoginException e) {
             e.printStackTrace();
         }

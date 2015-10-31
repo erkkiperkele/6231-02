@@ -8,6 +8,7 @@ import Transport.Corba.LoanManager.BankServer;
 import Transport.Corba.LoanManager.BankServerHelper;
 import Transport.RMI.RecordNotFoundException;
 import org.omg.CORBA.ORB;
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import javax.security.auth.login.FailedLoginException;
 import java.io.BufferedReader;
@@ -110,11 +111,14 @@ public class BankClientCorba implements ICustomerServer, IManagerServer {
     @Override
     public CustomerInfo[] getCustomersInfo(Bank bank) throws FailedLoginException {
 
+        throw new NotImplementedException();
+    }
+
+    @Override
+    public String getCustomersInfoMessage(Bank bank) throws FailedLoginException {
+
         Transport.Corba.BankServerPackage.Bank corbaBank =
                 ObjectMapper.toCorbaBank(bank);
-        String customersInfo = bankServer.getCustomersInfo(corbaBank);
-
-        //TODO: Implement the toCustomersInfo method!
-        return ObjectMapper.toCustomersInfo(customersInfo);
+        return bankServer.getCustomersInfo(corbaBank);
     }
 }

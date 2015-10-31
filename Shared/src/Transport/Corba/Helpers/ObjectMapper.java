@@ -24,22 +24,26 @@ public class ObjectMapper {
 
     public static Transport.Corba.BankServerPackage.Date toCorbaDate(Date date) {
 
-        Calendar cal = Calendar.getInstance();
-        cal.setTime(date);
-        return new Transport.Corba.BankServerPackage.Date(cal.YEAR, cal.MONTH, cal.DAY_OF_MONTH);
+        return mapToCorbaObject(date);
     }
 
     public static Customer toCorbaCustomer(Data.Customer customer) {
-        return new Customer(
-                (short)customer.getId(),
-                customer.getFirstName(),
-                customer.getLastName(),
-                customer.getEmail(),
-                toCorbaBank(customer.getBank()),
-                (short)customer.getAccountNumber(),
-                customer.getPhone(),
-                customer.getPassword()
-        );
+        return mapToCorbaObject(customer);
+    }
+
+    public static Loan toCorbaLoan(Data.Loan serverLoan) {
+        return mapToCorbaObject(serverLoan);
+    }
+
+    //REFACTOR: pass a customerInfo[] in Corba IDL instead of managing a string.
+    public static String toCorbaCustomersInfo(CustomerInfo[] customersInfo) {
+
+        String corbaCustomersInfo = "";
+        for(CustomerInfo customerInfo : customersInfo)
+        {
+            corbaCustomersInfo += mapToCorbaObject(customerInfo);
+        }
+        return corbaCustomersInfo;
     }
 
     public static Data.Customer toCustomer(Transport.Corba.BankServerPackage.Customer corbaCustomer) {
@@ -75,7 +79,13 @@ public class ObjectMapper {
         return bank;
     }
 
+    public static Date toDate(Transport.Corba.BankServerPackage.Date currentDueDate) {
+
+        return mapToClientObject(currentDueDate);
+    }
+
     public static CustomerInfo[] toCustomersInfo(String customersInfo) {
+
         throw new NotImplementedException();
     }
 
@@ -101,6 +111,45 @@ public class ObjectMapper {
                 );
         }
         return destination;
+    }
+
+    private static Customer mapToCorbaObject(Data.Customer customer) {
+        return new Customer(
+                (short)customer.getId(),
+                customer.getFirstName(),
+                customer.getLastName(),
+                customer.getEmail(),
+                toCorbaBank(customer.getBank()),
+                (short)customer.getAccountNumber(),
+                customer.getPhone(),
+                customer.getPassword()
+        );
+    }
+
+    private static Transport.Corba.BankServerPackage.Date mapToCorbaObject(Date date) {
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        int year = cal.get(cal.YEAR);
+        int month = cal.get(cal.MONTH)+1;
+        int day = cal.get(cal.DAY_OF_MONTH);
+        return new Transport.Corba.BankServerPackage.Date(year, month, day);
+    }
+
+    private static Transport.Corba.BankServerPackage.Loan mapToCorbaObject(Data.Loan serverLoan){
+
+        Transport.Corba.BankServerPackage.Loan corbaLoan = new Loan(
+                (short)serverLoan.getLoanNumber(),
+                (short)serverLoan.getCustomerAccountNumber(),
+                (int)serverLoan.getAmount(),
+                mapToCorbaObject(serverLoan.getDueDate())
+        );
+
+        return corbaLoan;
+    }
+
+    private static String mapToCorbaObject(CustomerInfo customerInfo){
+
+        return customerInfo.toString();
     }
 
     private static Data.Bank mapToClientObject(Bank source) throws ObjectMappingException {
@@ -157,7 +206,7 @@ public class ObjectMapper {
         Calendar calendar = Calendar.getInstance();
         calendar.clear();
         calendar.set(Calendar.DAY_OF_MONTH, corbaDate.day);
-        calendar.set(Calendar.MONTH, corbaDate.month);
+        calendar.set(Calendar.MONTH, corbaDate.month -1);
         calendar.set(Calendar.YEAR, corbaDate.year);
         return calendar.getTime();
     }

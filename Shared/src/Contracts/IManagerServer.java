@@ -38,4 +38,12 @@ public interface IManagerServer {
             throws FailedLoginException;
 
 
+    /**
+     * Returns a printable version of the customersInfo
+     * @param bank
+     * @return
+     * @throws FailedLoginException
+     */
+    String getCustomersInfoMessage(Bank bank)
+            throws FailedLoginException;
 }
