@@ -7,10 +7,8 @@ import Data.Bank;
 import Data.Customer;
 import Data.Loan;
 import Transport.BankClientCorba;
-import Transport.CustomerRMIClient;
 
 import javax.security.auth.login.FailedLoginException;
-import java.rmi.RemoteException;
 
 /**
  * This service provides the customer console's functionality
@@ -21,15 +19,7 @@ public class CustomerService implements ICustomerService {
     private ICustomerServer[] clients;
 
     public CustomerService() {
-//        initializeRMIClients();
         initializeCorbaClients();
-    }
-
-    private void initializeRMIClients() {
-        this.clients = new CustomerRMIClient[3];
-        this.clients[Bank.Royal.toInt() - 1] = new CustomerRMIClient(Bank.Royal);
-        this.clients[Bank.National.toInt() - 1] = new CustomerRMIClient(Bank.National);
-        this.clients[Bank.Dominion.toInt() - 1] = new CustomerRMIClient(Bank.Dominion);
     }
 
     private void initializeCorbaClients() {
@@ -48,16 +38,9 @@ public class CustomerService implements ICustomerService {
             String phoneNumber,
             String password) {
 
-        try {
-
-            ICustomerServer client = this.clients[bank.toInt() - 1];
-            int accountNumber = client.openAccount(bank, firstName, lastName, emailAddress, phoneNumber, password);
-            return accountNumber;
-
-        } catch (RemoteException e) {
-            e.printStackTrace();
-            return 0;
-        }
+        ICustomerServer client = this.clients[bank.toInt() - 1];
+        int accountNumber = client.openAccount(bank, firstName, lastName, emailAddress, phoneNumber, password);
+        return accountNumber;
     }
 
     @Override
@@ -65,12 +48,7 @@ public class CustomerService implements ICustomerService {
             throws FailedLoginException {
 
         try {
-
             return this.clients[bank.toInt() - 1].getCustomer(bank, email, password);
-
-        } catch (RemoteException e) {
-            e.printStackTrace();
-            return null;
         } catch (FailedLoginException e) {
             SessionService.getInstance().log().error(e.getMessage());
             throw e;
@@ -79,8 +57,8 @@ public class CustomerService implements ICustomerService {
 
     @Override
     public Customer signIn(Bank bank, String email, String password) throws FailedLoginException {
-        try {
 
+        try {
             Customer foundCustomer = this.clients[bank.toInt() - 1].signIn(bank, email, password);
             SessionService.getInstance().log().info(
                     String.format("Customer just signed in as : %1$s %2$s at bank %3$s",
@@ -89,9 +67,6 @@ public class CustomerService implements ICustomerService {
                             foundCustomer.getBank().toString()
                     ));
             return foundCustomer;
-        } catch (RemoteException e) {
-            e.printStackTrace();
-            return null;
         } catch (FailedLoginException e) {
             SessionService.getInstance().log().error(e.getMessage());
             throw e;
@@ -103,12 +78,7 @@ public class CustomerService implements ICustomerService {
 
         Loan newLoan = null;
         try {
-
             newLoan = this.clients[bank.toInt() - 1].getLoan(bank, accountNumber, password, loanAmount);
-
-        } catch (RemoteException e) {
-            e.printStackTrace();
-            return null;
         } catch (FailedLoginException e) {
             SessionService.getInstance().log().error(e.getMessage());
             e.printStackTrace();

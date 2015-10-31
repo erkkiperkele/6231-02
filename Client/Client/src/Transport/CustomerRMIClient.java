@@ -1,5 +1,6 @@
 package Transport;
 
+import Contracts.ICustomerRMIServer;
 import Contracts.ICustomerServer;
 import Data.Bank;
 import Data.Customer;
@@ -16,7 +17,7 @@ import java.rmi.RemoteException;
  * An implementation for the Customer server interface.
  * (See interface documentation for details on functionality)
  */
-public class CustomerRMIClient implements ICustomerServer {
+public class CustomerRMIClient implements ICustomerRMIServer {
 
     private final String policyPath = "./LoanManagerSecurity.policy";
     private ICustomerServer server;
@@ -27,7 +28,7 @@ public class CustomerRMIClient implements ICustomerServer {
         this.server = null;
 
         try {
-            String serverUrl = String.format("rmi://localhost:%d/customer", ServerPorts.CustomerRMI.getRMIPort());
+            String serverUrl = String.format("rmi://localhost:%d/customer", ServerPorts.getRMIPort(bank));
             this.server = (ICustomerServer) Naming.lookup(serverUrl);
         } catch (MalformedURLException e) {
             e.printStackTrace();

@@ -1,8 +1,6 @@
 package Server;
 
-import Contracts.IBankService;
-import Contracts.ICustomerServer;
-import Contracts.IManagerServer;
+import Contracts.*;
 import Data.Bank;
 import Data.Customer;
 import Data.CustomerInfo;
@@ -17,8 +15,7 @@ import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.Date;
 
-public class BankServerRMI implements ICustomerServer, IManagerServer {
-
+public class BankServerRMI implements ICustomerRMIServer, IManagerRMIServer {
 
     private IBankService bankService;
     private int serverPort;

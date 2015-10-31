@@ -1,5 +1,6 @@
 package Transport;
 
+import Contracts.IManagerRMIServer;
 import Contracts.IManagerServer;
 import Data.Bank;
 import Data.CustomerInfo;
@@ -17,7 +18,7 @@ import java.util.Date;
  * An implementation for the Manager server interface.
  * (See interface documentation for details on functionality)
  */
-public class ManagerRMIClient implements IManagerServer {
+public class ManagerRMIClient implements IManagerRMIServer {
 
     private final String policyPath = "./LoanManagerSecurity.policy";
     private IManagerServer server;
@@ -29,7 +30,7 @@ public class ManagerRMIClient implements IManagerServer {
         this.server = null;
 
         try {
-            String serverUrl = String.format("rmi://localhost:%d/manager", ServerPorts.CustomerRMI.getRMIPort());
+            String serverUrl = String.format("rmi://localhost:%d/manager", ServerPorts.getRMIPort(bank));
             this.server = (IManagerServer) Naming.lookup(serverUrl);
         } catch (MalformedURLException e) {
             e.printStackTrace();

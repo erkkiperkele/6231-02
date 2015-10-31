@@ -16,6 +16,7 @@ import org.omg.PortableServer.POAPackage.WrongPolicy;
 
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
+import java.util.Properties;
 
 /**
  * This class starts both RMI and UDP servers for a given bank.
@@ -83,11 +84,17 @@ public class BankServer {
 
         try {
             String[] args = new String[]{};
-            ORB orb = ORB.init(args, null);
+
+            Bank bank = SessionService.getInstance().getBank();
+            int serverPort = ServerPorts.getRMIPort(bank);
+            Properties props = new Properties();
+            props.put("ORBPort", serverPort);
+            ORB orb = ORB.init(args, props);
+
             POA rootPOA = POAHelper.narrow(orb.resolve_initial_references("RootPOA"));
 
             //Obtain a reference
-            BankServerCorba bankServerCorba = new BankServerCorba();
+            BankServerCorba bankServerCorba = new BankServerCorba(bankService, serverPort);
             byte[] id = rootPOA.activate_object(bankServerCorba);
             org.omg.CORBA.Object ref = rootPOA.id_to_reference(id);
 
@@ -95,7 +102,7 @@ public class BankServer {
             String ior = orb.object_to_string(ref);
             System.out.println(ior);
 
-            PrintWriter file = new PrintWriter("ior.txt");
+            PrintWriter file = new PrintWriter(String.format("ior_%s.txt", bank.name()));
             file.println(ior);
             file.close();
 

@@ -13,7 +13,7 @@ import java.util.Date;
 /**
  * Defines the manager's server contract (excludes any customer's operation).
  */
-public interface IManagerServer {
+public interface IManagerRMIServer extends Remote {
 
     /**
      * allows a manager to change the due date of a Loan
@@ -25,7 +25,7 @@ public interface IManagerServer {
      * @throws RecordNotFoundException
      */
     void delayPayment(Bank bank, int loanID, Date currentDueDate, Date newDueDate)
-            throws RecordNotFoundException;
+            throws RemoteException, RecordNotFoundException;
 
     /**
      * retrieves all customers information at the given bank
@@ -35,7 +35,7 @@ public interface IManagerServer {
      * @throws FailedLoginException thrown if the target bank does not correspond to the server's identity
      */
     CustomerInfo[] getCustomersInfo(Bank bank)
-            throws FailedLoginException;
+            throws RemoteException, FailedLoginException;
 
 
 }

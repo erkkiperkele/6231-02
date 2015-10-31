@@ -10,7 +10,7 @@ import java.rmi.RemoteException;
 /**
  * Defines the customer's server API contract (excludes any manager operation).
  */
-public interface ICustomerServer {
+public interface ICustomerRMIServer {
 
     /**
      * Allows a client to create a new account
@@ -23,7 +23,8 @@ public interface ICustomerServer {
      * @return
      * @throws RemoteException Standard Remote interface exception. See RMI documentation.
      */
-    int openAccount(Bank bank, String firstName, String lastName, String emailAddress, String phoneNumber, String password);
+    int openAccount(Bank bank, String firstName, String lastName, String emailAddress, String phoneNumber, String password)
+        throws RemoteException;
 
     /**
      * Allows to retrieve a single customer information
@@ -34,7 +35,7 @@ public interface ICustomerServer {
      * @throws RemoteException
      * @throws FailedLoginException thrown if the password and or the bank are incorrect.
      */
-    Customer getCustomer(Bank bank, String email, String password) throws FailedLoginException;
+    Customer getCustomer(Bank bank, String email, String password) throws RemoteException, FailedLoginException;
 
     /**
      * Allows to validate a customer's credential on the server.
@@ -45,7 +46,7 @@ public interface ICustomerServer {
      * @throws RemoteException
      * @throws FailedLoginException
      */
-    Customer signIn(Bank bank, String email, String password) throws FailedLoginException;
+    Customer signIn(Bank bank, String email, String password) throws RemoteException, FailedLoginException;
 
     /**
      * Will create a new loan for the given account after validating the customer's credit line against all banks.
@@ -58,6 +59,6 @@ public interface ICustomerServer {
      * @throws RemoteException
      * @throws FailedLoginException
      */
-    Loan getLoan(Bank bank, int accountNumber, String password, long loanAmount) throws FailedLoginException;
+    Loan getLoan(Bank bank, int accountNumber, String password, long loanAmount) throws RemoteException, FailedLoginException;
 
 }

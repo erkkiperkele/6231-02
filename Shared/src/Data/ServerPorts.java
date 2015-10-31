@@ -1,30 +1,6 @@
 package Data;
 
-public enum ServerPorts {
-
-    CustomerRMI,
-    ManagerRMI,
-    UDP;
-
-    /**
-     * maps a port name to its actual local port.
-     * @return
-     */
-    public int getRMIPort() {
-        switch (this) {
-            case CustomerRMI:
-                return 4242;
-
-            case ManagerRMI:
-                return 4343;
-
-            case UDP:
-                return 4444;
-
-            default:
-                return 0;
-        }
-    }
+public class ServerPorts {
 
     /**
      * maps each bank to a local port.
