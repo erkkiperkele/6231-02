@@ -45,7 +45,7 @@ public interface BankServerOperations
     /**
      * Operation transferLoan
      */
-    public Transport.Corba.BankServerPackage.Loan transferLoan(short LoanId, Transport.Corba.BankServerPackage.Bank CurrentBank, Transport.Corba.BankServerPackage.Bank OtherBank)
+    public Transport.Corba.BankServerPackage.Loan transferLoan(short loanId, Transport.Corba.BankServerPackage.Bank currentBank, Transport.Corba.BankServerPackage.Bank otherBank)
         throws Transport.Corba.BankServerPackage.TransferException;
 
 }

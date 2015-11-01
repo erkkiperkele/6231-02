@@ -4,7 +4,7 @@ import java.io.*;
 
 public class Serializer<E> {
 
-    public byte[] serialize(Object object)
+    public static byte[] serialize(Object object)
             throws IOException {
 
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();

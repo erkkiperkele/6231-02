@@ -5,9 +5,10 @@ import Data.Account;
 import Data.Loan;
 import Data.ServerPorts;
 import Services.SessionService;
-import Transport.UDP.GetLoanMessage;
-import Transport.UDP.Serializer;
+import Transport.UDP.*;
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
+import javax.security.auth.login.FailedLoginException;
 import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
@@ -62,6 +63,10 @@ public class UDPServer {
         } catch (IOException e) {
             System.out.println("IO: " + e.getMessage());
             e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (FailedLoginException e) {
+            e.printStackTrace();
         } finally {
             if (aSocket != null) {
                 aSocket.close();
@@ -70,48 +75,113 @@ public class UDPServer {
 
     }
 
+    private byte[] processMessage(byte[] message) throws IOException, ClassNotFoundException, FailedLoginException {
+
+        Serializer udpMessageSerializer = new Serializer<UDPMessage>();
+        UDPMessage udpMessage = (UDPMessage) udpMessageSerializer.deserialize(message);
+
+        switch (udpMessage.getOperation()) {
+            case CreateAccount:
+                return processCreateAccountMessage(udpMessage.getMessage());
+            case GetAccount:
+                return processGetAccountMessage(udpMessage.getMessage());
+            case CreateLoan:
+                return processCreateLoanMessage(udpMessage.getMessage());
+            case GetLoan:
+                return processGetLoanMessage(udpMessage.getMessage());
+            default:
+                throw new NotImplementedException();
+        }
+    }
+
     /**
      * Upon reception of a GetLoanMessage() the udp server will calculate the current
      * Credit line of the mentioned customer and return it to the sender of the request.
      * returns 0 if Customer has no account at the requested bank.
+     *
      * @param message a serialized GetLoanMessage() Please use the serializer provided to ensure message is valid.
      * @return a serialized long indicating the current credit line at this bank for the given customer.
      * @throws IOException
      */
-    private byte[] processMessage(byte[] message) throws IOException {
+    private byte[] processGetLoanMessage(IOperationMessage message) throws IOException {
 
         long currentLoanAmount = 0;
-        Serializer loanMessageSerializer = new Serializer<GetLoanMessage>();
-        Serializer loanSerializer = new Serializer<Loan>();
 
-        try {
+        GetLoanMessage loanMessage = (GetLoanMessage) message;
 
-            GetLoanMessage loanMessage = (GetLoanMessage) loanMessageSerializer.deserialize(message);
+        Account account = this.customerService.getAccount(loanMessage.getFirstName(), loanMessage.getLastName());
 
-            Account account = this.customerService.getAccount(loanMessage.getFirstName(), loanMessage.getLastName());
+        if (account != null) {
+            List<Loan> loans = this.customerService.getLoans(account.getAccountNumber());
 
-            if (account != null) {
-                List<Loan> loans = this.customerService.getLoans(account.getAccountNumber());
+            currentLoanAmount = loans
+                    .stream()
+                    .mapToLong(l -> l.getAmount())
+                    .sum();
 
-                currentLoanAmount = loans
-                        .stream()
-                        .mapToLong(l -> l.getAmount())
-                        .sum();
-
-                System.out.println(String.format("Loan amount %d", currentLoanAmount));
-            } else {
-                SessionService.getInstance().log().info(
-                        String.format("%1$s %2$s doesn't have a credit record at our bank",
-                                loanMessage.getFirstName(),
-                                loanMessage.getLastName())
-                );
-            }
-
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
+            System.out.println(String.format("Loan amount %d", currentLoanAmount));
+        } else {
+            SessionService.getInstance().log().info(
+                    String.format("%1$s %2$s doesn't have a credit record at our bank",
+                            loanMessage.getFirstName(),
+                            loanMessage.getLastName())
+            );
         }
 
+        Serializer loanSerializer = new Serializer<Long>();
         byte[] serializedLoan = loanSerializer.serialize(currentLoanAmount);
         return serializedLoan;
+    }
+
+    private byte[] processCreateLoanMessage(IOperationMessage message) throws FailedLoginException, IOException {
+
+        CreateLoanMessage loanMessage = (CreateLoanMessage) message;
+
+        Loan loan= this.customerService.getLoan(
+                SessionService.getInstance().getBank(),
+                loanMessage.getAccount().getAccountNumber(),
+                loanMessage.getAccount().getOwner().getPassword(),
+                loanMessage.getLoan().getAmount()
+        );
+
+        Serializer loanSerializer = new Serializer<Loan>();
+        byte[] serializedLoan = loanSerializer.serialize(loan);
+        return serializedLoan;
+    }
+
+    private byte[] processGetAccountMessage(IOperationMessage message) throws IOException {
+
+        GetAccountMessage accountMessage = (GetAccountMessage) message;
+
+        Account account= this.customerService.getAccount(
+                accountMessage.getFirstName(),
+                accountMessage.getLastName()
+        );
+
+        Serializer accountSerializer = new Serializer<Account>();
+        byte[] serializedAccount = accountSerializer.serialize(account);
+        return serializedAccount;
+    }
+
+    private byte[] processCreateAccountMessage(IOperationMessage message) throws IOException {
+        CreateAccountMessage accountMessage = (CreateAccountMessage) message;
+
+        int accountId = this.customerService.openAccount(
+                SessionService.getInstance().getBank(),
+                accountMessage.getCustomer().getFirstName(),
+                accountMessage.getCustomer().getLastName(),
+                accountMessage.getCustomer().getEmail(),
+                accountMessage.getCustomer().getPhone(),
+                accountMessage.getCustomer().getPassword()
+        );
+
+        Account account = this.customerService.getAccount(
+                accountMessage.getCustomer().getFirstName(),
+                accountMessage.getCustomer().getLastName()
+        );
+
+        Serializer accountSerializer = new Serializer<Account>();
+        byte[] serializedAccount = accountSerializer.serialize(account);
+        return serializedAccount;
     }
 }

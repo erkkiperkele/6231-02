@@ -165,6 +165,22 @@ public class DataRepository {
     }
 
     /**
+     * retrieves a loan by its loan id
+     * @param loanId
+     * @return
+     */
+    public Loan getLoan(int loanId)
+    {
+        Loan loan = this.loans.values()
+                .stream()
+                .flatMap(l -> l.stream())
+                .filter(l -> l.getLoanNumber() == loanId)
+                .findFirst()
+                .orElse(null);
+        return loan;
+    }
+
+    /**
      * Creates a new loan at the current bank.
      * No validation is performed at this layer.
      *
@@ -394,5 +410,11 @@ public class DataRepository {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+    }
+
+    public boolean deleteLoan(String username, int loanNumber) {
+
+        List<Loan> loans = getLoansAtIndex(username);
+        return loans.removeIf(l -> l.getLoanNumber() == loanNumber);
     }
 }

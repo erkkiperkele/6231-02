@@ -424,3 +424,30 @@ Sat Oct 31 20:36:09 EDT 2015 INFO: This Account already exists for Concurrent1
 Sat Oct 31 20:36:14 EDT 2015 INFO: new Loan accepted for Alex (200$), current credit: 700$
 Sat Oct 31 20:36:14 EDT 2015 INFO: Server returned 12 customers info
 Sat Oct 31 20:36:14 EDT 2015 INFO: Due date for loan #2 changed to 18-12-2016
+Sat Oct 31 21:20:40 EDT 2015 INFO: Thread #1 CREATED account for Alex
+Sat Oct 31 21:20:40 EDT 2015 INFO: new account created for Alex (account #2)
+Sat Oct 31 21:20:40 EDT 2015 INFO: Thread #1 CREATED account for Justin
+Sat Oct 31 21:20:40 EDT 2015 INFO: new account created for Justin (account #3)
+Sat Oct 31 21:20:40 EDT 2015 INFO: Thread #1 CREATED account for Maria
+Sat Oct 31 21:20:40 EDT 2015 INFO: new account created for Maria (account #4)
+Sat Oct 31 21:20:40 EDT 2015 INFO: Thread #1 CREATED account for Sylvain
+Sat Oct 31 21:20:40 EDT 2015 INFO: new account created for Sylvain (account #5)
+Sat Oct 31 23:24:11 EDT 2015 INFO: Thread #1 CREATED account for Alex
+Sat Oct 31 23:24:11 EDT 2015 INFO: new account created for Alex (account #2)
+Sat Oct 31 23:24:11 EDT 2015 INFO: Thread #1 CREATED account for Justin
+Sat Oct 31 23:24:11 EDT 2015 INFO: new account created for Justin (account #3)
+Sat Oct 31 23:24:11 EDT 2015 INFO: Thread #1 CREATED account for Maria
+Sat Oct 31 23:24:11 EDT 2015 INFO: new account created for Maria (account #4)
+Sat Oct 31 23:24:11 EDT 2015 INFO: Thread #1 CREATED account for Sylvain
+Sat Oct 31 23:24:11 EDT 2015 INFO: new account created for Sylvain (account #5)
+Sat Oct 31 23:24:42 EDT 2015 INFO: Thread #1 CREATED account for Alex
+Sat Oct 31 23:24:42 EDT 2015 INFO: new account created for Alex (account #2)
+Sat Oct 31 23:24:42 EDT 2015 INFO: Thread #1 CREATED account for Justin
+Sat Oct 31 23:24:42 EDT 2015 INFO: new account created for Justin (account #3)
+Sat Oct 31 23:24:42 EDT 2015 INFO: Thread #1 CREATED account for Maria
+Sat Oct 31 23:24:42 EDT 2015 INFO: new account created for Maria (account #4)
+Sat Oct 31 23:24:42 EDT 2015 INFO: Thread #1 CREATED account for Sylvain
+Sat Oct 31 23:24:42 EDT 2015 INFO: new account created for Sylvain (account #5)
+Sat Oct 31 23:24:59 EDT 2015 INFO: Thread #13 CREATED account for Aymeric
+Sat Oct 31 23:24:59 EDT 2015 INFO: new account created for Aymeric (account #6)
+Sat Oct 31 23:25:42 EDT 2015 INFO: new Loan accepted for Aymeric (100$), current credit: 100$

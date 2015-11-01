@@ -4,9 +4,12 @@ package Server;
 import Contracts.IBankService;
 import Data.CustomerInfo;
 import Transport.Corba.BankServerPackage.*;
+import Transport.Corba.BankServerPackage.Bank;
+import Transport.Corba.BankServerPackage.Customer;
+import Transport.Corba.BankServerPackage.Loan;
+import Transport.Corba.BankServerPackage.TransferException;
 import Transport.Corba.Helpers.ObjectMapper;
 import Transport.Corba.LoanManager.BankServerPOA;
-import Exceptions.RecordNotFoundException;
 
 import javax.security.auth.login.FailedLoginException;
 
@@ -78,7 +81,7 @@ public class BankServerCorba extends BankServerPOA {
         java.util.Date serverNewDueDate = ObjectMapper.toDate(newDueDate);
         try {
             bankService.delayPayment(serverBank, (int) loanID, serverCurrentDueDate, serverNewDueDate);
-        } catch (RecordNotFoundException e) {
+        } catch (Exceptions.RecordNotFoundException e) {
             throw new Transport.Corba.BankServerPackage.RecordNotFoundException(e.getMessage());
         }
     }
@@ -99,9 +102,18 @@ public class BankServerCorba extends BankServerPOA {
 
     //TODO: Real implementation!
     @Override
-    public Loan transferLoan(short LoanId, Bank CurrentBank, Bank OtherBank) throws TransferException {
+    public Loan transferLoan(short loanId, Bank currentBank, Bank otherBank) throws TransferException {
 
-        short loanId = -1;
-        return new Loan(loanId, loanId, -1, new Date());
+        Data.Bank serverCurrentBank = ObjectMapper.toBank(currentBank);
+        Data.Bank serverOtherBank = ObjectMapper.toBank(otherBank);
+
+        Data.Loan newLoan;
+
+        try {
+            newLoan = bankService.transferLoan(loanId, serverCurrentBank, serverOtherBank);
+            return ObjectMapper.toCorbaLoan(newLoan);
+        } catch (Exceptions.TransferException e) {
+            throw new Transport.Corba.BankServerPackage.TransferException(e.getMessage());
+        }
     }
 }

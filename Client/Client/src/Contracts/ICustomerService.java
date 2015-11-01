@@ -58,7 +58,7 @@ public interface ICustomerService {
     Loan getLoan(Bank bank, int accountNumber, String password, long loanAmount);
 
     /**
-     * Requests the server to transfer a loan from a bank to another.
+     * Transfers a loan from a bank to another.
      * If the current user does not have an account at the other bank, the account will be created.
      * The transfer is transactional. If any of the required operation fails, all prior operations will
      * be rolled back.
