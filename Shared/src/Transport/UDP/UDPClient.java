@@ -42,7 +42,7 @@ public class UDPClient implements Closeable {
         DatagramPacket request = new DatagramPacket(message, message.length, this.host, serverPort);
         this.socket.send(request);
 
-        System.err.println(String.format("UDP CLIENT is waiting answer on port: %d", this.socket.getLocalPort()));
+        System.out.println(String.format("UDP CLIENT is waiting answer on port: %d", this.socket.getLocalPort()));
 
         byte[] buffer = new byte[1000];
         DatagramPacket reply = new DatagramPacket(buffer, buffer.length);

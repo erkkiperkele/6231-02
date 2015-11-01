@@ -25,25 +25,44 @@ public class UDPServer {
     }
 
     public void startServer() {
-        System.out.println(String.format("UDP Server is starting"));
 
-
-        DatagramSocket aSocket = null;
-        try {
-
-            //Setup the socket
             int serverPort = ServerPorts.getUDPPort(SessionService.getInstance().getBank());
+            DatagramSocket aSocket = null;
+
+        try {
+            //Setup the socket
             aSocket = new DatagramSocket(serverPort);
             byte[] buffer = new byte[1000];
 
             //Setup the loop to process request
             while (true) {
-                System.err.println(String.format("UDP Server STARTED"));
-
                 DatagramPacket request = new DatagramPacket(buffer, buffer.length);
                 aSocket.receive(request);
 
-                System.out.println(String.format("UDP Server received Message"));
+                final DatagramSocket finalSocket = aSocket;
+                Thread processRequest = createProcessRequestThread(finalSocket, request);
+                processRequest.start();
+
+            }
+        } catch (SocketException e) {
+            System.out.println("Socket: " + e.getMessage());
+        } catch (IOException e) {
+            System.out.println("IO: " + e.getMessage());
+            e.printStackTrace();
+        } finally {
+            if (aSocket != null) {
+                aSocket.close();
+            }
+        }
+
+    }
+
+    private Thread createProcessRequestThread(DatagramSocket aSocket, DatagramPacket request) {
+        Thread processRequest = new Thread(() ->
+        {
+            try {
+
+                System.out.println(String.format("[UDP] Server received Message"));
 
                 byte[] message = request.getData();
                 byte[] answer = processMessage(message);
@@ -56,24 +75,16 @@ public class UDPServer {
                         answerPort
                 );
                 aSocket.send(reply);
-
-                System.out.println(String.format("UDP Server Answered Message on port: %d", answerPort));
+                System.out.println(String.format("[UDP] Server Answered Message on port: %d", answerPort));
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            } catch (FailedLoginException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-        } catch (SocketException e) {
-            System.out.println("Socket: " + e.getMessage());
-        } catch (IOException e) {
-            System.out.println("IO: " + e.getMessage());
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (FailedLoginException e) {
-            e.printStackTrace();
-        } finally {
-            if (aSocket != null) {
-                aSocket.close();
-            }
-        }
-
+        });
+        return processRequest;
     }
 
     private byte[] processMessage(byte[] message) throws IOException, ClassNotFoundException, FailedLoginException {
@@ -141,6 +152,7 @@ public class UDPServer {
     /**
      * Note this calls a restricted operation in order to get a loan without checking the credit line
      * This is only accepted in case of a transfer where a loan is already existing.
+     *
      * @param message
      * @return
      * @throws FailedLoginException
@@ -158,7 +170,7 @@ public class UDPServer {
 
 
         //REFACTOR: Should not cast interface to its implementation to access restricted operation
-        Loan loan= ((BankService)this.customerService).getLoanWithNoCreditLineCheck(
+        Loan loan = ((BankService) this.customerService).getLoanWithNoCreditLineCheck(
                 SessionService.getInstance().getBank(),
                 loanMessage.getAccount().getAccountNumber(),
                 loanMessage.getAccount().getOwner().getPassword(),
@@ -190,7 +202,7 @@ public class UDPServer {
                         accountMessage.getFirstName())
         );
 
-        Account account= this.customerService.getAccount(
+        Account account = this.customerService.getAccount(
                 accountMessage.getFirstName(),
                 accountMessage.getLastName()
         );

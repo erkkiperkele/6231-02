@@ -6,6 +6,7 @@ import Data.Customer;
 import Data.CustomerInfo;
 import Data.Loan;
 import Exceptions.RecordNotFoundException;
+import Exceptions.TransferException;
 import Services.BankService;
 import Services.SessionService;
 
@@ -20,8 +21,10 @@ public class BankServiceTest {
 
 
     private static IBankService bankService;
+    private static Bank bank;
+    private static Bank anotherBank;
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FailedLoginException {
 
         String serverArg = args.length == 0
                 ? "1"
@@ -34,17 +37,22 @@ public class BankServiceTest {
     }
 
     private static void initialize(String arg) {
-        Bank serverName = Bank.fromInt(Integer.parseInt(arg));
-        SessionService.getInstance().setBank(serverName);
+        bank = Bank.fromInt(Integer.parseInt(arg));
+        anotherBank = bank == Bank.Royal
+                ? Bank.National
+                : Bank.Royal;
+
+        SessionService.getInstance().setBank(bank);
         bankService = new BankService();
     }
 
-    private static void runTests() {
+    private static void runTests() throws FailedLoginException {
         testInitial();
         testOpeningMultipleAccounts();
         testUDPGetLoan();
         testPrintCustomersInfo();
         testDelayPayment();
+        testTransferMultipleLoans();
     }
 
     public static void testInitial() {
@@ -230,5 +238,67 @@ public class BankServiceTest {
         } else {
             SessionService.getInstance().log().info(String.format("%1$s has no loans currently", customerName));
         }
+    }
+
+    /**
+     * Simulates 2 users each concurrently transferring 4 loans.
+     * 2 of which from a first bank and the 2 others from another bank
+     * note that requests are crossed (transfers both ways from both bank concurrently to make
+     * sure UDP concurrencuy is properly handled.
+     * @throws FailedLoginException
+     */
+    private static void testTransferMultipleLoans() throws FailedLoginException {
+
+
+        //4 loans transferred concurrently for a user
+        Loan loan1 = bankService.getLoan(bank, 2, "aa", 1);
+        Loan loan2 = bankService.getLoan(bank, 2, "aa", 1);
+        Loan loan3 = bankService.getLoan(anotherBank, 2, "aa", 1);
+        Loan loan4 = bankService.getLoan(anotherBank, 2, "aa", 1);
+
+        //4 loans transferred concurrently for another user
+        Loan loan5 = bankService.getLoan(bank, 3, "aa", 1);
+        Loan loan6 = bankService.getLoan(bank, 3, "aa", 1);
+        Loan loan7 = bankService.getLoan(anotherBank, 3, "aa", 1);
+        Loan loan8 = bankService.getLoan(anotherBank, 3, "aa", 1);
+
+        Thread transferLoan1 = generateThreadTransferLoan(anotherBank, loan1);
+        Thread transferLoan2 = generateThreadTransferLoan(anotherBank, loan2);
+        Thread transferLoan3 = generateThreadTransferLoan(bank, loan3);
+        Thread transferLoan4 = generateThreadTransferLoan(bank, loan4);
+
+        Thread transferLoan5 = generateThreadTransferLoan(anotherBank, loan5);
+        Thread transferLoan6 = generateThreadTransferLoan(anotherBank, loan6);
+        Thread transferLoan7 = generateThreadTransferLoan(bank, loan7);
+        Thread transferLoan8 = generateThreadTransferLoan(bank, loan8);
+
+        transferLoan1.start();
+        transferLoan2.start();
+        transferLoan3.start();
+        transferLoan4.start();
+
+        transferLoan5.start();
+        transferLoan6.start();
+        transferLoan7.start();
+        transferLoan8.start();
+    }
+
+    private static Thread generateThreadTransferLoan(Bank otherBank, Loan loan) {
+        return new Thread(() ->
+        {
+            int loanId = loan.getLoanNumber();
+            try {
+                bankService.transferLoan(loanId, bank, otherBank);
+                System.out.println(
+                        String.format(
+                                "thread #%1$d transferred loan #%2$d to bank: %3$s",
+                                Thread.currentThread().getId(),
+                                loanId,
+                                otherBank.name())
+                );
+            } catch (TransferException e) {
+                e.printStackTrace();
+            }
+        });
     }
 }

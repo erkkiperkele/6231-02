@@ -78,6 +78,8 @@ public class BankServer {
             udp.startServer();
         });
         startUdpServer.start();
+        SessionService.getInstance().log().info(String.format("[UDP] SERVER STARTED"));
+
     }
 
     public static void startCorbaServer() {
@@ -106,9 +108,12 @@ public class BankServer {
             file.println(ior);
             file.close();
 
+            SessionService.getInstance().log().info(String.format("[CORBA] SERVER STARTED"));
+
             //initialize the ORB
             rootPOA.the_POAManager().activate();
             orb.run();
+
         } catch (WrongPolicy wrongPolicy) {
             wrongPolicy.printStackTrace();
         } catch (FileNotFoundException e) {

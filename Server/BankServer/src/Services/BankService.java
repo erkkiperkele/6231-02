@@ -125,17 +125,33 @@ public class BankService implements IBankService {
         }
     }
 
+    /**
+     * Note that the core of this operation is atomic, so that both UDP operations and data access operations
+     * are protected against concurrency errors while transferring data from one server to another.
+     *
+     * @param loanId of the loan at the current bank
+     * @param currentBank the current customer's bank where the loan is from
+     * @param otherBank the new bank the loan is transferred to
+     * @return
+     * @throws TransferException
+     */
     @Override
     public Loan transferLoan(int loanId, Bank currentBank, Bank otherBank) throws TransferException {
 
         Loan loan = findLoan(loanId);
         Customer customer = findCustomer(loan);
-        Account externalAccount = findExternalAccount(otherBank, customer);
 
         Loan externalLoan;
         try{
+
+            //WARNING: Needs 2 locks!
+            //Need a large lock to avoid concurrent UDP access (message mixed up)
+            //Need the ususal smaller lock to protect data being read/write at given index.
+            //Mind the lock order when locking/unlocking this section.
+            LockFactory.getInstance().writeLock("");
             LockFactory.getInstance().writeLock(customer.getUserName());
 
+            Account externalAccount = findExternalAccount(otherBank, customer);
             externalLoan = tryTransferLoan(loanId, otherBank, loan, externalAccount);
             tryDeleteLoan(loanId, loan, customer);
 
@@ -148,6 +164,7 @@ public class BankService implements IBankService {
         }
         finally{
             LockFactory.getInstance().writeUnlock(customer.getUserName());
+            LockFactory.getInstance().writeUnlock("");
         }
         return externalLoan;
     }
@@ -186,8 +203,8 @@ public class BankService implements IBankService {
     }
 
     private Loan tryTransferLoan(int loanId, Bank otherBank, Loan loan, Account externalAccount) throws TransferException {
-        Loan externalLoan;
-        externalLoan = createLoanAtBank(otherBank, externalAccount, loan);
+
+        Loan externalLoan = createLoanAtBank(otherBank, externalAccount, loan);
         if (externalLoan == null)
         {
             String message = String.format(
