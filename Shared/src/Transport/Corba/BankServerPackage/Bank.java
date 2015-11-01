@@ -54,7 +54,7 @@ public final class Bank implements org.omg.CORBA.portable.IDLEntity
 
     /**
      * Private constructor
-     * @param the enum value for this new member
+     * @param  the enum value for this new member
      */
     private Bank( final int value )
     {
@@ -65,7 +65,7 @@ public final class Bank implements org.omg.CORBA.portable.IDLEntity
      * Maintains singleton property for serialized enums.
      * Issue 4271: IDL/Java issue, Mapping for IDL enum.
      */
-    public Object readResolve() throws java.io.ObjectStreamException
+    public java.lang.Object readResolve() throws java.io.ObjectStreamException
     {
         return from_int( value() );
     }
@@ -104,7 +104,7 @@ public final class Bank implements org.omg.CORBA.portable.IDLEntity
      * Return a string representation
      * @return a string representation of the enumeration
      */
-    public String toString()
+    public java.lang.String toString()
     {
         switch ( _Bank_value )
         {

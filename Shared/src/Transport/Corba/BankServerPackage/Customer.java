@@ -30,7 +30,7 @@ public final class Customer implements org.omg.CORBA.portable.IDLEntity
     /**
      * Struct member bank
      */
-    public Bank bank;
+    public Transport.Corba.BankServerPackage.Bank bank;
 
     /**
      * Struct member accountNumber
@@ -64,7 +64,7 @@ public final class Customer implements org.omg.CORBA.portable.IDLEntity
      * @param phone phone struct member
      * @param password password struct member
      */
-    public Customer(short id, String firstName, String lastName, String email, Bank bank, short accountNumber, String phone, String password)
+    public Customer(short id, String firstName, String lastName, String email, Transport.Corba.BankServerPackage.Bank bank, short accountNumber, String phone, String password)
     {
         this.id = id;
         this.firstName = firstName;

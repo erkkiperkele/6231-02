@@ -27,9 +27,9 @@ public class CustomerHelper
      * @param a an any
      * @param t Customer value
      */
-    public static void insert(org.omg.CORBA.Any a, Customer t)
+    public static void insert(org.omg.CORBA.Any a, Transport.Corba.BankServerPackage.Customer t)
     {
-        a.insert_Streamable(new CustomerHolder(t));
+        a.insert_Streamable(new Transport.Corba.BankServerPackage.CustomerHolder(t));
     }
 
     /**
@@ -38,7 +38,7 @@ public class CustomerHelper
      * @param a an any
      * @return the extracted Customer value
      */
-    public static Customer extract( org.omg.CORBA.Any a )
+    public static Transport.Corba.BankServerPackage.Customer extract( org.omg.CORBA.Any a )
     {
         if ( !a.type().equivalent( type() ) )
         {
@@ -49,13 +49,13 @@ public class CustomerHelper
             org.openorb.orb.core.Any any = (org.openorb.orb.core.Any)a;
             try {
                 org.omg.CORBA.portable.Streamable s = any.extract_Streamable();
-                if ( s instanceof CustomerHolder )
-                    return ( ( CustomerHolder ) s ).value;
+                if ( s instanceof Transport.Corba.BankServerPackage.CustomerHolder )
+                    return ( ( Transport.Corba.BankServerPackage.CustomerHolder ) s ).value;
             }
             catch ( org.omg.CORBA.BAD_INV_ORDER ex )
             {
             }
-            CustomerHolder h = new CustomerHolder( read( a.create_input_stream() ) );
+            Transport.Corba.BankServerPackage.CustomerHolder h = new Transport.Corba.BankServerPackage.CustomerHolder( read( a.create_input_stream() ) );
             a.insert_Streamable( h );
             return h.value;
         }
@@ -98,7 +98,7 @@ public class CustomerHelper
                 _members[ 3 ].type = orb.get_primitive_tc( org.omg.CORBA.TCKind.tk_string );
                 _members[ 4 ] = new org.omg.CORBA.StructMember();
                 _members[ 4 ].name = "bank";
-                _members[ 4 ].type = BankHelper.type();
+                _members[ 4 ].type = Transport.Corba.BankServerPackage.BankHelper.type();
                 _members[ 5 ] = new org.omg.CORBA.StructMember();
                 _members[ 5 ].name = "accountNumber";
                 _members[ 5 ].type = orb.get_primitive_tc( org.omg.CORBA.TCKind.tk_short );
@@ -131,15 +131,15 @@ public class CustomerHelper
      * @param istream the input stream
      * @return the readed Customer value
      */
-    public static Customer read(org.omg.CORBA.portable.InputStream istream)
+    public static Transport.Corba.BankServerPackage.Customer read(org.omg.CORBA.portable.InputStream istream)
     {
-        Customer new_one = new Customer();
+        Transport.Corba.BankServerPackage.Customer new_one = new Transport.Corba.BankServerPackage.Customer();
 
         new_one.id = istream.read_short();
         new_one.firstName = istream.read_string();
         new_one.lastName = istream.read_string();
         new_one.email = istream.read_string();
-        new_one.bank = BankHelper.read(istream);
+        new_one.bank = Transport.Corba.BankServerPackage.BankHelper.read(istream);
         new_one.accountNumber = istream.read_short();
         new_one.phone = istream.read_string();
         new_one.password = istream.read_string();
@@ -152,13 +152,13 @@ public class CustomerHelper
      * @param ostream the output stream
      * @param value Customer value
      */
-    public static void write(org.omg.CORBA.portable.OutputStream ostream, Customer value)
+    public static void write(org.omg.CORBA.portable.OutputStream ostream, Transport.Corba.BankServerPackage.Customer value)
     {
         ostream.write_short( value.id );
         ostream.write_string( value.firstName );
         ostream.write_string( value.lastName );
         ostream.write_string( value.email );
-        BankHelper.write( ostream, value.bank );
+        Transport.Corba.BankServerPackage.BankHelper.write( ostream, value.bank );
         ostream.write_short( value.accountNumber );
         ostream.write_string( value.phone );
         ostream.write_string( value.password );

@@ -87,14 +87,10 @@ public class ManagerService implements IManagerService {
      */
     @Override
     public CustomerInfo[] getCustomersInfo(Bank bank) {
-        throw new NotImplementedException();
-    }
 
-    @Override
-    public String getCustomersInfoMessage(Bank bank) {
-        String infos = null;
+        CustomerInfo[] infos = null;
         try {
-            infos = this.clients[bank.toInt() - 1].getCustomersInfoMessage(bank);
+            infos = this.clients[bank.toInt() - 1].getCustomersInfo(bank);
         } catch (FailedLoginException e) {
             e.printStackTrace();
         }

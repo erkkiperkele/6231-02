@@ -3,6 +3,7 @@ package Transport;
 import Contracts.ICustomerServer;
 import Contracts.IManagerServer;
 import Data.*;
+import Transport.Corba.BankServerPackage.BankInfo;
 import Transport.Corba.Helpers.ObjectMapper;
 import Transport.Corba.LoanManager.BankServer;
 import Transport.Corba.LoanManager.BankServerHelper;
@@ -10,6 +11,7 @@ import Transport.RMI.RecordNotFoundException;
 import org.omg.CORBA.ORB;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
+import javax.management.ObjectName;
 import javax.security.auth.login.FailedLoginException;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -69,8 +71,13 @@ public class BankClientCorba implements ICustomerServer, IManagerServer {
 
         Transport.Corba.BankServerPackage.Bank corbaBank =
                 ObjectMapper.toCorbaBank(bank);
-        Transport.Corba.BankServerPackage.Customer corbaCustomer =
-                bankServer.getCustomer(corbaBank, email, password);
+        Transport.Corba.BankServerPackage.Customer corbaCustomer = null;
+
+        try {
+            corbaCustomer = bankServer.getCustomer(corbaBank, email, password);
+        } catch (Transport.Corba.BankServerPackage.FailedLoginException e) {
+            throw new FailedLoginException(e.message);
+        }
 
         return ObjectMapper.toCustomer(corbaCustomer);
     }
@@ -79,18 +86,27 @@ public class BankClientCorba implements ICustomerServer, IManagerServer {
     public Customer signIn(Bank bank, String email, String password) throws FailedLoginException {
         Transport.Corba.BankServerPackage.Bank corbaBank =
                 ObjectMapper.toCorbaBank(bank);
-        Transport.Corba.BankServerPackage.Customer corbaCustomer =
-                bankServer.signIn(corbaBank, email, password);
+        Transport.Corba.BankServerPackage.Customer corbaCustomer = null;
+
+        try {
+            corbaCustomer = bankServer.signIn(corbaBank, email, password);
+        } catch (Transport.Corba.BankServerPackage.FailedLoginException e) {
+            throw new FailedLoginException(e.message);
+        }
 
         return ObjectMapper.toCustomer(corbaCustomer);
     }
 
     @Override
     public Loan getLoan(Bank bank, int accountNumber, String password, long loanAmount) throws FailedLoginException {
-        Transport.Corba.BankServerPackage.Bank corbaBank =
-                ObjectMapper.toCorbaBank(bank);
-        Transport.Corba.BankServerPackage.Loan corbaLoan =
-                bankServer.getLoan(corbaBank, (short)accountNumber, password, (int)loanAmount);
+        Transport.Corba.BankServerPackage.Bank corbaBank = ObjectMapper.toCorbaBank(bank);
+        Transport.Corba.BankServerPackage.Loan corbaLoan = null;
+
+        try {
+            corbaLoan = bankServer.getLoan(corbaBank, (short)accountNumber, password, (int)loanAmount);
+        } catch (Transport.Corba.BankServerPackage.FailedLoginException e) {
+            throw new FailedLoginException(e.message);
+        }
 
         return ObjectMapper.toLoan(corbaLoan);
     }
@@ -105,20 +121,25 @@ public class BankClientCorba implements ICustomerServer, IManagerServer {
         Transport.Corba.BankServerPackage.Date corbaNewDueDate =
                 ObjectMapper.toCorbaDate(newDueDate);
 
-        bankServer.delayPayment(corbaBank, (short)loanID, corbaCurrentDueDate, corbaNewDueDate);
+        try {
+            bankServer.delayPayment(corbaBank, (short)loanID, corbaCurrentDueDate, corbaNewDueDate);
+        } catch (Transport.Corba.BankServerPackage.RecordNotFoundException e) {
+            throw new RecordNotFoundException(e.message);
+        }
     }
 
+    //TODO: FIx it!
     @Override
     public CustomerInfo[] getCustomersInfo(Bank bank) throws FailedLoginException {
 
-        throw new NotImplementedException();
-    }
-
-    @Override
-    public String getCustomersInfoMessage(Bank bank) throws FailedLoginException {
-
         Transport.Corba.BankServerPackage.Bank corbaBank =
                 ObjectMapper.toCorbaBank(bank);
-        return bankServer.getCustomersInfo(corbaBank);
+
+        try {
+            BankInfo bankInfo = bankServer.getCustomersInfo(corbaBank);
+            return ObjectMapper.toCustomersInfo(bankInfo);
+        } catch (Transport.Corba.BankServerPackage.FailedLoginException e) {
+            throw new FailedLoginException(e.message);
+        }
     }
 }

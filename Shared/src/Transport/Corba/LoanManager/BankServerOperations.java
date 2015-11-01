@@ -1,10 +1,5 @@
 package Transport.Corba.LoanManager;
 
-import Transport.Corba.BankServerPackage.Bank;
-import Transport.Corba.BankServerPackage.Customer;
-import Transport.Corba.BankServerPackage.Date;
-import Transport.Corba.BankServerPackage.Loan;
-
 /**
  * Interface definition: BankServer.
  * 
@@ -15,31 +10,42 @@ public interface BankServerOperations
     /**
      * Operation openAccount
      */
-    public short openAccount(Bank bank, String firstName, String lastName, String emailAddress, String phoneNumber, String password);
+    public short openAccount(Transport.Corba.BankServerPackage.Bank bank, String firstName, String lastName, String emailAddress, String phoneNumber, String password);
 
     /**
      * Operation getCustomer
      */
-    public Customer getCustomer(Bank bank, String email, String password);
+    public Transport.Corba.BankServerPackage.Customer getCustomer(Transport.Corba.BankServerPackage.Bank bank, String email, String password)
+        throws Transport.Corba.BankServerPackage.FailedLoginException;
 
     /**
      * Operation signIn
      */
-    public Customer signIn(Bank bank, String email, String password);
+    public Transport.Corba.BankServerPackage.Customer signIn(Transport.Corba.BankServerPackage.Bank bank, String email, String password)
+        throws Transport.Corba.BankServerPackage.FailedLoginException;
 
     /**
      * Operation getLoan
      */
-    public Loan getLoan(Bank bankId, short accountNumber, String password, int loanAmount);
+    public Transport.Corba.BankServerPackage.Loan getLoan(Transport.Corba.BankServerPackage.Bank bankId, short accountNumber, String password, int loanAmount)
+        throws Transport.Corba.BankServerPackage.FailedLoginException;
 
     /**
      * Operation delayPayment
      */
-    public void delayPayment(Bank bank, short loanID, Date currentDueDate, Date newDueDate);
+    public void delayPayment(Transport.Corba.BankServerPackage.Bank bank, short loanID, Transport.Corba.BankServerPackage.Date currentDueDate, Transport.Corba.BankServerPackage.Date newDueDate)
+        throws Transport.Corba.BankServerPackage.RecordNotFoundException;
 
     /**
      * Operation getCustomersInfo
      */
-    public String getCustomersInfo(Bank bank);
+    public Transport.Corba.BankServerPackage.BankInfo getCustomersInfo(Transport.Corba.BankServerPackage.Bank bank)
+        throws Transport.Corba.BankServerPackage.FailedLoginException;
+
+    /**
+     * Operation TransferLoan
+     */
+    public Transport.Corba.BankServerPackage.Loan TransferLoan(short LoanId, Transport.Corba.BankServerPackage.Bank CurrentBank, Transport.Corba.BankServerPackage.Bank OtherBank)
+        throws Transport.Corba.BankServerPackage.TransferException;
 
 }

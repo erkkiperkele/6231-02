@@ -43,7 +43,7 @@ public class BankServer {
 
         //Starting bank server
 //        startRMIServer();
-//        startUDPServer();
+        startUDPServer();
         startCorbaServer();
     }
 

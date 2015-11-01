@@ -7,4 +7,8 @@ package Transport.RMI;
  * but not for find or get methods (return empty object instead).
  */
 public class RecordNotFoundException extends Exception {
+
+    public RecordNotFoundException(String message) {
+        super(message);
+    }
 }

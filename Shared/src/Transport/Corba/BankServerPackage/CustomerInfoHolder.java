@@ -1,58 +1,58 @@
 package Transport.Corba.BankServerPackage;
 
 /**
- * Holder class for : Customer
+ * Holder class for : CustomerInfo
  * 
  * @author OpenORB Compiler
  */
-final public class CustomerHolder
+final public class CustomerInfoHolder
         implements org.omg.CORBA.portable.Streamable
 {
     /**
-     * Internal Customer value
+     * Internal CustomerInfo value
      */
-    public Transport.Corba.BankServerPackage.Customer value;
+    public Transport.Corba.BankServerPackage.CustomerInfo value;
 
     /**
      * Default constructor
      */
-    public CustomerHolder()
+    public CustomerInfoHolder()
     { }
 
     /**
      * Constructor with value initialisation
      * @param initial the initial value
      */
-    public CustomerHolder(Transport.Corba.BankServerPackage.Customer initial)
+    public CustomerInfoHolder(Transport.Corba.BankServerPackage.CustomerInfo initial)
     {
         value = initial;
     }
 
     /**
-     * Read Customer from a marshalled stream
+     * Read CustomerInfo from a marshalled stream
      * @param istream the input stream
      */
     public void _read(org.omg.CORBA.portable.InputStream istream)
     {
-        value = CustomerHelper.read(istream);
+        value = CustomerInfoHelper.read(istream);
     }
 
     /**
-     * Write Customer into a marshalled stream
+     * Write CustomerInfo into a marshalled stream
      * @param ostream the output stream
      */
     public void _write(org.omg.CORBA.portable.OutputStream ostream)
     {
-        CustomerHelper.write(ostream,value);
+        CustomerInfoHelper.write(ostream,value);
     }
 
     /**
-     * Return the Customer TypeCode
+     * Return the CustomerInfo TypeCode
      * @return a TypeCode
      */
     public org.omg.CORBA.TypeCode _type()
     {
-        return CustomerHelper.type();
+        return CustomerInfoHelper.type();
     }
 
 }

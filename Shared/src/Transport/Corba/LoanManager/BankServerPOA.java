@@ -1,7 +1,5 @@
 package Transport.Corba.LoanManager;
 
-import Transport.Corba.BankServerPackage.*;
-
 /**
  * Interface definition: BankServer.
  * 
@@ -35,7 +33,9 @@ public abstract class BankServerPOA extends org.omg.PortableServer.Servant
             final org.omg.CORBA.portable.ResponseHandler handler)
     {
 
-        if (opName.equals("delayPayment")) {
+        if (opName.equals("TransferLoan")) {
+                return _invoke_TransferLoan(_is, handler);
+        } else if (opName.equals("delayPayment")) {
                 return _invoke_delayPayment(_is, handler);
         } else if (opName.equals("getCustomer")) {
                 return _invoke_getCustomer(_is, handler);
@@ -57,7 +57,7 @@ public abstract class BankServerPOA extends org.omg.PortableServer.Servant
             final org.omg.CORBA.portable.InputStream _is,
             final org.omg.CORBA.portable.ResponseHandler handler) {
         org.omg.CORBA.portable.OutputStream _output;
-        Bank arg0_in = BankHelper.read(_is);
+        Transport.Corba.BankServerPackage.Bank arg0_in = Transport.Corba.BankServerPackage.BankHelper.read(_is);
         String arg1_in = _is.read_string();
         String arg2_in = _is.read_string();
         String arg3_in = _is.read_string();
@@ -76,15 +76,23 @@ public abstract class BankServerPOA extends org.omg.PortableServer.Servant
             final org.omg.CORBA.portable.InputStream _is,
             final org.omg.CORBA.portable.ResponseHandler handler) {
         org.omg.CORBA.portable.OutputStream _output;
-        Bank arg0_in = BankHelper.read(_is);
+        Transport.Corba.BankServerPackage.Bank arg0_in = Transport.Corba.BankServerPackage.BankHelper.read(_is);
         String arg1_in = _is.read_string();
         String arg2_in = _is.read_string();
 
-        Customer _arg_result = getCustomer(arg0_in, arg1_in, arg2_in);
+        try
+        {
+            Transport.Corba.BankServerPackage.Customer _arg_result = getCustomer(arg0_in, arg1_in, arg2_in);
 
-        _output = handler.createReply();
-        CustomerHelper.write(_output,_arg_result);
+            _output = handler.createReply();
+            Transport.Corba.BankServerPackage.CustomerHelper.write(_output,_arg_result);
 
+        }
+        catch (Transport.Corba.BankServerPackage.FailedLoginException _exception)
+        {
+            _output = handler.createExceptionReply();
+            Transport.Corba.BankServerPackage.FailedLoginExceptionHelper.write(_output,_exception);
+        }
         return _output;
     }
 
@@ -92,15 +100,23 @@ public abstract class BankServerPOA extends org.omg.PortableServer.Servant
             final org.omg.CORBA.portable.InputStream _is,
             final org.omg.CORBA.portable.ResponseHandler handler) {
         org.omg.CORBA.portable.OutputStream _output;
-        Bank arg0_in = BankHelper.read(_is);
+        Transport.Corba.BankServerPackage.Bank arg0_in = Transport.Corba.BankServerPackage.BankHelper.read(_is);
         String arg1_in = _is.read_string();
         String arg2_in = _is.read_string();
 
-        Customer _arg_result = signIn(arg0_in, arg1_in, arg2_in);
+        try
+        {
+            Transport.Corba.BankServerPackage.Customer _arg_result = signIn(arg0_in, arg1_in, arg2_in);
 
-        _output = handler.createReply();
-        CustomerHelper.write(_output,_arg_result);
+            _output = handler.createReply();
+            Transport.Corba.BankServerPackage.CustomerHelper.write(_output,_arg_result);
 
+        }
+        catch (Transport.Corba.BankServerPackage.FailedLoginException _exception)
+        {
+            _output = handler.createExceptionReply();
+            Transport.Corba.BankServerPackage.FailedLoginExceptionHelper.write(_output,_exception);
+        }
         return _output;
     }
 
@@ -108,16 +124,24 @@ public abstract class BankServerPOA extends org.omg.PortableServer.Servant
             final org.omg.CORBA.portable.InputStream _is,
             final org.omg.CORBA.portable.ResponseHandler handler) {
         org.omg.CORBA.portable.OutputStream _output;
-        Bank arg0_in = BankHelper.read(_is);
+        Transport.Corba.BankServerPackage.Bank arg0_in = Transport.Corba.BankServerPackage.BankHelper.read(_is);
         short arg1_in = _is.read_short();
         String arg2_in = _is.read_string();
         int arg3_in = _is.read_long();
 
-        Loan _arg_result = getLoan(arg0_in, arg1_in, arg2_in, arg3_in);
+        try
+        {
+            Transport.Corba.BankServerPackage.Loan _arg_result = getLoan(arg0_in, arg1_in, arg2_in, arg3_in);
 
-        _output = handler.createReply();
-        LoanHelper.write(_output,_arg_result);
+            _output = handler.createReply();
+            Transport.Corba.BankServerPackage.LoanHelper.write(_output,_arg_result);
 
+        }
+        catch (Transport.Corba.BankServerPackage.FailedLoginException _exception)
+        {
+            _output = handler.createExceptionReply();
+            Transport.Corba.BankServerPackage.FailedLoginExceptionHelper.write(_output,_exception);
+        }
         return _output;
     }
 
@@ -125,15 +149,23 @@ public abstract class BankServerPOA extends org.omg.PortableServer.Servant
             final org.omg.CORBA.portable.InputStream _is,
             final org.omg.CORBA.portable.ResponseHandler handler) {
         org.omg.CORBA.portable.OutputStream _output;
-        Bank arg0_in = BankHelper.read(_is);
+        Transport.Corba.BankServerPackage.Bank arg0_in = Transport.Corba.BankServerPackage.BankHelper.read(_is);
         short arg1_in = _is.read_short();
-        Date arg2_in = DateHelper.read(_is);
-        Date arg3_in = DateHelper.read(_is);
+        Transport.Corba.BankServerPackage.Date arg2_in = Transport.Corba.BankServerPackage.DateHelper.read(_is);
+        Transport.Corba.BankServerPackage.Date arg3_in = Transport.Corba.BankServerPackage.DateHelper.read(_is);
 
-        delayPayment(arg0_in, arg1_in, arg2_in, arg3_in);
+        try
+        {
+            delayPayment(arg0_in, arg1_in, arg2_in, arg3_in);
 
-        _output = handler.createReply();
+            _output = handler.createReply();
 
+        }
+        catch (Transport.Corba.BankServerPackage.RecordNotFoundException _exception)
+        {
+            _output = handler.createExceptionReply();
+            Transport.Corba.BankServerPackage.RecordNotFoundExceptionHelper.write(_output,_exception);
+        }
         return _output;
     }
 
@@ -141,13 +173,45 @@ public abstract class BankServerPOA extends org.omg.PortableServer.Servant
             final org.omg.CORBA.portable.InputStream _is,
             final org.omg.CORBA.portable.ResponseHandler handler) {
         org.omg.CORBA.portable.OutputStream _output;
-        Bank arg0_in = BankHelper.read(_is);
+        Transport.Corba.BankServerPackage.Bank arg0_in = Transport.Corba.BankServerPackage.BankHelper.read(_is);
 
-        String _arg_result = getCustomersInfo(arg0_in);
+        try
+        {
+            Transport.Corba.BankServerPackage.BankInfo _arg_result = getCustomersInfo(arg0_in);
 
-        _output = handler.createReply();
-        _output.write_string(_arg_result);
+            _output = handler.createReply();
+            Transport.Corba.BankServerPackage.BankInfoHelper.write(_output,_arg_result);
 
+        }
+        catch (Transport.Corba.BankServerPackage.FailedLoginException _exception)
+        {
+            _output = handler.createExceptionReply();
+            Transport.Corba.BankServerPackage.FailedLoginExceptionHelper.write(_output,_exception);
+        }
+        return _output;
+    }
+
+    private org.omg.CORBA.portable.OutputStream _invoke_TransferLoan(
+            final org.omg.CORBA.portable.InputStream _is,
+            final org.omg.CORBA.portable.ResponseHandler handler) {
+        org.omg.CORBA.portable.OutputStream _output;
+        short arg0_in = _is.read_short();
+        Transport.Corba.BankServerPackage.Bank arg1_in = Transport.Corba.BankServerPackage.BankHelper.read(_is);
+        Transport.Corba.BankServerPackage.Bank arg2_in = Transport.Corba.BankServerPackage.BankHelper.read(_is);
+
+        try
+        {
+            Transport.Corba.BankServerPackage.Loan _arg_result = TransferLoan(arg0_in, arg1_in, arg2_in);
+
+            _output = handler.createReply();
+            Transport.Corba.BankServerPackage.LoanHelper.write(_output,_arg_result);
+
+        }
+        catch (Transport.Corba.BankServerPackage.TransferException _exception)
+        {
+            _output = handler.createExceptionReply();
+            Transport.Corba.BankServerPackage.TransferExceptionHelper.write(_output,_exception);
+        }
         return _output;
     }
 

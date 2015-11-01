@@ -1,58 +1,58 @@
 package Transport.Corba.BankServerPackage;
 
 /**
- * Holder class for : Customer
+ * Holder class for : RecordNotFoundException
  * 
  * @author OpenORB Compiler
  */
-final public class CustomerHolder
+final public class RecordNotFoundExceptionHolder
         implements org.omg.CORBA.portable.Streamable
 {
     /**
-     * Internal Customer value
+     * Internal RecordNotFoundException value
      */
-    public Transport.Corba.BankServerPackage.Customer value;
+    public Transport.Corba.BankServerPackage.RecordNotFoundException value;
 
     /**
      * Default constructor
      */
-    public CustomerHolder()
+    public RecordNotFoundExceptionHolder()
     { }
 
     /**
      * Constructor with value initialisation
      * @param initial the initial value
      */
-    public CustomerHolder(Transport.Corba.BankServerPackage.Customer initial)
+    public RecordNotFoundExceptionHolder(Transport.Corba.BankServerPackage.RecordNotFoundException initial)
     {
         value = initial;
     }
 
     /**
-     * Read Customer from a marshalled stream
+     * Read RecordNotFoundException from a marshalled stream
      * @param istream the input stream
      */
     public void _read(org.omg.CORBA.portable.InputStream istream)
     {
-        value = CustomerHelper.read(istream);
+        value = RecordNotFoundExceptionHelper.read(istream);
     }
 
     /**
-     * Write Customer into a marshalled stream
+     * Write RecordNotFoundException into a marshalled stream
      * @param ostream the output stream
      */
     public void _write(org.omg.CORBA.portable.OutputStream ostream)
     {
-        CustomerHelper.write(ostream,value);
+        RecordNotFoundExceptionHelper.write(ostream,value);
     }
 
     /**
-     * Return the Customer TypeCode
+     * Return the RecordNotFoundException TypeCode
      * @return a TypeCode
      */
     public org.omg.CORBA.TypeCode _type()
     {
-        return CustomerHelper.type();
+        return RecordNotFoundExceptionHelper.type();
     }
 
 }

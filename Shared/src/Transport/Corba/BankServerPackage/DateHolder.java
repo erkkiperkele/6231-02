@@ -11,7 +11,7 @@ final public class DateHolder
     /**
      * Internal Date value
      */
-    public Date value;
+    public Transport.Corba.BankServerPackage.Date value;
 
     /**
      * Default constructor
@@ -23,7 +23,7 @@ final public class DateHolder
      * Constructor with value initialisation
      * @param initial the initial value
      */
-    public DateHolder(Date initial)
+    public DateHolder(Transport.Corba.BankServerPackage.Date initial)
     {
         value = initial;
     }

@@ -17,7 +17,7 @@ import java.util.List;
  * The bank service provides an implementation for both the customer and manager services.
  * (See interface documentation for details on the functionality provided by both those services)
  */
-public class BankService implements IBankService{
+public class BankService implements IBankService {
 
     private DataRepository repository;
     private UDPClient udp;
@@ -41,9 +41,19 @@ public class BankService implements IBankService{
     }
 
     @Override
-    public Customer getCustomer(String email) {
+    public Customer getCustomer(String email, String password) throws FailedLoginException {
 
-        return this.repository.getCustomer(email);
+        Customer foundCustomer = this.repository.getCustomer(email);
+
+
+        if (foundCustomer == null) {
+            throw new FailedLoginException(String.format("Customer doesn't exist for email: %s", email));
+        }
+        if (!foundCustomer.getPassword().equals(password)) {
+            throw new FailedLoginException(String.format("Wrong password for email %s", email));
+        }
+
+        return foundCustomer;
     }
 
     @Override
@@ -79,42 +89,35 @@ public class BankService implements IBankService{
             throw new FailedLoginException(String.format("Wrong password for account %d", accountNumber));
         }
 
-        try {
-
-            LockFactory.getInstance().writeLock(userName);
-
-            long internalLoansAmount = this.repository.getLoans(accountNumber)
-                    .stream()
-                    .mapToLong(l -> l.getAmount())
-                    .sum();
+        long internalLoansAmount = this.repository.getLoans(accountNumber)
+                .stream()
+                .mapToLong(l -> l.getAmount())
+                .sum();
 
 
-            long externalLoansAmount = getExternalLoans(customer.getFirstName(), customer.getLastName());
+        long externalLoansAmount = getExternalLoans(customer.getFirstName(), customer.getLastName());
 
-            long currentCredit = externalLoansAmount + internalLoansAmount;
+        long currentCredit = externalLoansAmount + internalLoansAmount;
 
-            if (currentCredit + loanAmount < account.getCreditLimit()) {
-                Calendar calendar = Calendar.getInstance();
-                calendar.add(calendar.MONTH, 6);
-                Date dueDate = calendar.getTime();
+        if (currentCredit + loanAmount < account.getCreditLimit()) {
+            Calendar calendar = Calendar.getInstance();
+            calendar.add(calendar.MONTH, 6);
+            Date dueDate = calendar.getTime();
 
-                newLoan = this.repository.createLoan(userName, loanAmount, dueDate);
-                SessionService.getInstance().log().info(
-                        String.format("new Loan accepted for %s (%d$), current credit: %d$",
-                                customer.getFirstName(),
-                                newLoan.getAmount(),
-                                loanAmount + currentCredit)
-                );
-            } else {
-                SessionService.getInstance().log().info(
-                        String.format("new Loan refuse for %s (%d$), current credit: %d$",
-                                customer.getFirstName(),
-                                loanAmount,
-                                currentCredit)
-                );
-            }
-        } finally {
-            LockFactory.getInstance().writeUnlock(userName);
+            newLoan = this.repository.createLoan(userName, loanAmount, dueDate);
+            SessionService.getInstance().log().info(
+                    String.format("new Loan accepted for %s (%d$), current credit: %d$",
+                            customer.getFirstName(),
+                            newLoan.getAmount(),
+                            loanAmount + currentCredit)
+            );
+        } else {
+            SessionService.getInstance().log().info(
+                    String.format("new Loan refuse for %s (%d$), current credit: %d$",
+                            customer.getFirstName(),
+                            loanAmount,
+                            currentCredit)
+            );
         }
 
         return newLoan;

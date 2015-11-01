@@ -48,24 +48,31 @@ public class BankServiceTest {
     }
 
     public static void testInitial() {
-        String unknownUsername = "dummy@dummy.com";
-        Customer unknown = bankService.getCustomer(unknownUsername);
+
+        try {
+            String unknownUsername = "dummy@dummy.com";
+        Customer unknown = bankService.getCustomer(unknownUsername, "aa");
         printCustomer(unknown, unknownUsername);
 
         String mariaUsername = "maria.etinger@gmail.com";
-        Customer maria = bankService.getCustomer(mariaUsername);
+        Customer maria = bankService.getCustomer(mariaUsername, "aa");
         printCustomer(maria, mariaUsername);
 
         String justinUsername = "justin.paquette@gmail.com";
-        Customer justin = bankService.getCustomer(justinUsername);
+        Customer justin = bankService.getCustomer(justinUsername, "aa");
         printCustomer(justin, justinUsername);
 
         String alexUserName = "alex.emond@gmail.com";
-        Customer alex = bankService.getCustomer(alexUserName);
+        Customer alex = null;
+            alex = bankService.getCustomer(alexUserName, "aa");
         printCustomer(alex, alexUserName);
 
         List<Loan> alexLoans = bankService.getLoans(alex.getAccountNumber());
         printLoans(alexLoans, alex.getFirstName());
+
+        } catch (FailedLoginException e) {
+            e.printStackTrace();
+        }
     }
 
     public static void testOpeningMultipleAccounts() {

@@ -210,10 +210,9 @@ public class DataRepository {
                             dateFormat.format(newDueDate))
             );
         } else {
-            SessionService.getInstance().log().info(
-                    String.format("No record found for loand #%d", loanId)
-            );
-            throw new RecordNotFoundException();
+            String message = String.format("No record found for loand #%d", loanId);
+            SessionService.getInstance().log().info(message);
+            throw new RecordNotFoundException(message);
         }
     }
 
@@ -284,8 +283,8 @@ public class DataRepository {
             List<Account> accounts = getAccountsAtIndex(index);
             LockFactory.getInstance().writeLock(owner.getUserName());
 
-            //UNCOMMENT FOR CONCURRENT CREATION TESTING
-            testConcurrentAccess(owner, "Concurrent1");
+//            //UNCOMMENT FOR CONCURRENT CREATION TESTING
+//            testConcurrentAccess(owner, "Concurrent1");
 
             accounts.add(newAccount);
 

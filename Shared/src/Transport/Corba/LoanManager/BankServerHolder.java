@@ -11,7 +11,7 @@ final public class BankServerHolder
     /**
      * Internal BankServer value
      */
-    public BankServer value;
+    public Transport.Corba.LoanManager.BankServer value;
 
     /**
      * Default constructor
@@ -23,7 +23,7 @@ final public class BankServerHolder
      * Constructor with value initialisation
      * @param initial the initial value
      */
-    public BankServerHolder(BankServer initial)
+    public BankServerHolder(Transport.Corba.LoanManager.BankServer initial)
     {
         value = initial;
     }

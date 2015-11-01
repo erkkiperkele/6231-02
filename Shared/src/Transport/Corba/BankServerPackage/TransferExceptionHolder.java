@@ -1,58 +1,58 @@
 package Transport.Corba.BankServerPackage;
 
 /**
- * Holder class for : Customer
+ * Holder class for : TransferException
  * 
  * @author OpenORB Compiler
  */
-final public class CustomerHolder
+final public class TransferExceptionHolder
         implements org.omg.CORBA.portable.Streamable
 {
     /**
-     * Internal Customer value
+     * Internal TransferException value
      */
-    public Transport.Corba.BankServerPackage.Customer value;
+    public Transport.Corba.BankServerPackage.TransferException value;
 
     /**
      * Default constructor
      */
-    public CustomerHolder()
+    public TransferExceptionHolder()
     { }
 
     /**
      * Constructor with value initialisation
      * @param initial the initial value
      */
-    public CustomerHolder(Transport.Corba.BankServerPackage.Customer initial)
+    public TransferExceptionHolder(Transport.Corba.BankServerPackage.TransferException initial)
     {
         value = initial;
     }
 
     /**
-     * Read Customer from a marshalled stream
+     * Read TransferException from a marshalled stream
      * @param istream the input stream
      */
     public void _read(org.omg.CORBA.portable.InputStream istream)
     {
-        value = CustomerHelper.read(istream);
+        value = TransferExceptionHelper.read(istream);
     }
 
     /**
-     * Write Customer into a marshalled stream
+     * Write TransferException into a marshalled stream
      * @param ostream the output stream
      */
     public void _write(org.omg.CORBA.portable.OutputStream ostream)
     {
-        CustomerHelper.write(ostream,value);
+        TransferExceptionHelper.write(ostream,value);
     }
 
     /**
-     * Return the Customer TypeCode
+     * Return the TransferException TypeCode
      * @return a TypeCode
      */
     public org.omg.CORBA.TypeCode _type()
     {
-        return CustomerHelper.type();
+        return TransferExceptionHelper.type();
     }
 
 }

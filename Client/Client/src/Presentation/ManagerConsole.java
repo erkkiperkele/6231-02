@@ -87,12 +87,14 @@ public class ManagerConsole {
 
         Bank bank = askBankId();
 
-        String customersInfo = managerService.getCustomersInfoMessage(bank);
-        System.out.println(customersInfo);
+        CustomerInfo[] customersInfo = managerService.getCustomersInfo(bank);
 
+        for (CustomerInfo info : customersInfo) {
+            System.out.println(info.toString());
+        }
 
         SessionService.getInstance().log().info(
-                String.format("Manager printed customers info for bank: %s", bank)
+                String.format("Manager printed %d customers info for bank: %s", customersInfo.length, bank)
         );
     }
 

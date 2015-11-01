@@ -11,7 +11,7 @@ final public class LoanHolder
     /**
      * Internal Loan value
      */
-    public Loan value;
+    public Transport.Corba.BankServerPackage.Loan value;
 
     /**
      * Default constructor
@@ -23,7 +23,7 @@ final public class LoanHolder
      * Constructor with value initialisation
      * @param initial the initial value
      */
-    public LoanHolder(Loan initial)
+    public LoanHolder(Transport.Corba.BankServerPackage.Loan initial)
     {
         value = initial;
     }

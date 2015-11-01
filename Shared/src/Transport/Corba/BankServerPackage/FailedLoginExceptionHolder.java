@@ -1,58 +1,58 @@
 package Transport.Corba.BankServerPackage;
 
 /**
- * Holder class for : Customer
+ * Holder class for : FailedLoginException
  * 
  * @author OpenORB Compiler
  */
-final public class CustomerHolder
+final public class FailedLoginExceptionHolder
         implements org.omg.CORBA.portable.Streamable
 {
     /**
-     * Internal Customer value
+     * Internal FailedLoginException value
      */
-    public Transport.Corba.BankServerPackage.Customer value;
+    public Transport.Corba.BankServerPackage.FailedLoginException value;
 
     /**
      * Default constructor
      */
-    public CustomerHolder()
+    public FailedLoginExceptionHolder()
     { }
 
     /**
      * Constructor with value initialisation
      * @param initial the initial value
      */
-    public CustomerHolder(Transport.Corba.BankServerPackage.Customer initial)
+    public FailedLoginExceptionHolder(Transport.Corba.BankServerPackage.FailedLoginException initial)
     {
         value = initial;
     }
 
     /**
-     * Read Customer from a marshalled stream
+     * Read FailedLoginException from a marshalled stream
      * @param istream the input stream
      */
     public void _read(org.omg.CORBA.portable.InputStream istream)
     {
-        value = CustomerHelper.read(istream);
+        value = FailedLoginExceptionHelper.read(istream);
     }
 
     /**
-     * Write Customer into a marshalled stream
+     * Write FailedLoginException into a marshalled stream
      * @param ostream the output stream
      */
     public void _write(org.omg.CORBA.portable.OutputStream ostream)
     {
-        CustomerHelper.write(ostream,value);
+        FailedLoginExceptionHelper.write(ostream,value);
     }
 
     /**
-     * Return the Customer TypeCode
+     * Return the FailedLoginException TypeCode
      * @return a TypeCode
      */
     public org.omg.CORBA.TypeCode _type()
     {
-        return CustomerHelper.type();
+        return FailedLoginExceptionHelper.type();
     }
 
 }

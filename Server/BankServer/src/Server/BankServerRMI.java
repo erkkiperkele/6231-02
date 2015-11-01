@@ -53,15 +53,7 @@ public class BankServerRMI implements ICustomerRMIServer, IManagerRMIServer {
     public Customer getCustomer(Bank bank, String email, String password)
             throws RemoteException, FailedLoginException {
 
-        Customer foundCustomer = bankService.getCustomer(email);
-
-        if (foundCustomer == null) {
-            throw new FailedLoginException(String.format("Customer doesn't exist for email: %s", email));
-        }
-        if (!foundCustomer.getPassword().equals(password)) {
-            throw new FailedLoginException(String.format("Wrong password for email %s", email));
-        }
-
+        Customer foundCustomer = bankService.getCustomer(email, password);
         return foundCustomer;
     }
 

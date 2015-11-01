@@ -32,7 +32,8 @@ public interface ICustomerService {
      * @param email
      * @return
      */
-    Customer getCustomer(String email);
+    Customer getCustomer(String email, String password)
+            throws FailedLoginException;
 
     /**
      * Retrieves a list of loans currently registered at the bank for the current user.

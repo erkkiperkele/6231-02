@@ -217,3 +217,36 @@ Sat Oct 31 14:38:57 EDT 2015 INFO: Thread #1 CREATED account for Maria
 Sat Oct 31 14:38:57 EDT 2015 INFO: new account created for Maria (account #4)
 Sat Oct 31 14:38:57 EDT 2015 INFO: Thread #1 CREATED account for Max
 Sat Oct 31 14:38:57 EDT 2015 INFO: new account created for Max (account #5)
+Sat Oct 31 19:58:49 EDT 2015 INFO: Thread #1 CREATED account for Alex
+Sat Oct 31 19:58:49 EDT 2015 INFO: new account created for Alex (account #2)
+Sat Oct 31 19:58:49 EDT 2015 INFO: Thread #1 CREATED account for Justin
+Sat Oct 31 19:58:49 EDT 2015 INFO: new account created for Justin (account #3)
+Sat Oct 31 19:58:49 EDT 2015 INFO: Thread #1 CREATED account for Maria
+Sat Oct 31 19:58:49 EDT 2015 INFO: new account created for Maria (account #4)
+Sat Oct 31 19:58:49 EDT 2015 INFO: Thread #1 CREATED account for Max
+Sat Oct 31 19:58:49 EDT 2015 INFO: new account created for Max (account #5)
+Sat Oct 31 20:00:29 EDT 2015 INFO: Thread #1 CREATED account for Alex
+Sat Oct 31 20:00:29 EDT 2015 INFO: new account created for Alex (account #2)
+Sat Oct 31 20:00:29 EDT 2015 INFO: Thread #1 CREATED account for Justin
+Sat Oct 31 20:00:29 EDT 2015 INFO: new account created for Justin (account #3)
+Sat Oct 31 20:00:29 EDT 2015 INFO: Thread #1 CREATED account for Maria
+Sat Oct 31 20:00:29 EDT 2015 INFO: new account created for Maria (account #4)
+Sat Oct 31 20:00:29 EDT 2015 INFO: Thread #1 CREATED account for Max
+Sat Oct 31 20:00:29 EDT 2015 INFO: new account created for Max (account #5)
+Sat Oct 31 20:03:53 EDT 2015 INFO: Thread #1 CREATED account for Alex
+Sat Oct 31 20:03:53 EDT 2015 INFO: new account created for Alex (account #2)
+Sat Oct 31 20:03:53 EDT 2015 INFO: Thread #1 CREATED account for Justin
+Sat Oct 31 20:03:53 EDT 2015 INFO: new account created for Justin (account #3)
+Sat Oct 31 20:03:53 EDT 2015 INFO: Thread #1 CREATED account for Maria
+Sat Oct 31 20:03:53 EDT 2015 INFO: new account created for Maria (account #4)
+Sat Oct 31 20:03:53 EDT 2015 INFO: Thread #1 CREATED account for Max
+Sat Oct 31 20:03:53 EDT 2015 INFO: new account created for Max (account #5)
+Sat Oct 31 20:04:16 EDT 2015 INFO: Aymeric Grail doesn't have a credit record at our bank
+Sat Oct 31 20:32:21 EDT 2015 INFO: Thread #1 CREATED account for Alex
+Sat Oct 31 20:32:22 EDT 2015 INFO: new account created for Alex (account #2)
+Sat Oct 31 20:32:22 EDT 2015 INFO: Thread #1 CREATED account for Justin
+Sat Oct 31 20:32:22 EDT 2015 INFO: new account created for Justin (account #3)
+Sat Oct 31 20:32:22 EDT 2015 INFO: Thread #1 CREATED account for Maria
+Sat Oct 31 20:32:22 EDT 2015 INFO: new account created for Maria (account #4)
+Sat Oct 31 20:32:22 EDT 2015 INFO: Thread #1 CREATED account for Max
+Sat Oct 31 20:32:22 EDT 2015 INFO: new account created for Max (account #5)

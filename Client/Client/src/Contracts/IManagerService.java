@@ -40,9 +40,4 @@ public interface IManagerService {
      * @return
      */
     CustomerInfo[] getCustomersInfo(Bank bank);
-
-    /**
-     * allows to retrieve a printable version of customersInfo
-     */
-    String getCustomersInfoMessage(Bank bank);
 }

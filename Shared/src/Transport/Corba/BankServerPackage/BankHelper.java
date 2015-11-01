@@ -12,7 +12,7 @@ public class BankHelper
      * @param a an any
      * @param t Bank value
      */
-    public static void insert(org.omg.CORBA.Any a, Bank t)
+    public static void insert(org.omg.CORBA.Any a, Transport.Corba.BankServerPackage.Bank t)
     {
         a.type(type());
         write(a.create_output_stream(),t);
@@ -24,7 +24,7 @@ public class BankHelper
      * @param a an any
      * @return the extracted Bank value
      */
-    public static Bank extract( org.omg.CORBA.Any a )
+    public static Transport.Corba.BankServerPackage.Bank extract( org.omg.CORBA.Any a )
     {
         if ( !a.type().equivalent( type() ) )
         {
@@ -72,7 +72,7 @@ public class BankHelper
      * @param istream the input stream
      * @return the readed Bank value
      */
-    public static Bank read(org.omg.CORBA.portable.InputStream istream)
+    public static Transport.Corba.BankServerPackage.Bank read(org.omg.CORBA.portable.InputStream istream)
     {
         return Bank.from_int(istream.read_ulong());
     }
@@ -82,7 +82,7 @@ public class BankHelper
      * @param ostream the output stream
      * @param value Bank value
      */
-    public static void write(org.omg.CORBA.portable.OutputStream ostream, Bank value)
+    public static void write(org.omg.CORBA.portable.OutputStream ostream, Transport.Corba.BankServerPackage.Bank value)
     {
         ostream.write_ulong(value.value());
     }

@@ -12,7 +12,7 @@ public class BankServerHelper
      * @param a an any
      * @param t BankServer value
      */
-    public static void insert(org.omg.CORBA.Any a, BankServer t)
+    public static void insert(org.omg.CORBA.Any a, Transport.Corba.LoanManager.BankServer t)
     {
         a.insert_Object(t , type());
     }
@@ -23,7 +23,7 @@ public class BankServerHelper
      * @param a an any
      * @return the extracted BankServer value
      */
-    public static BankServer extract( org.omg.CORBA.Any a )
+    public static Transport.Corba.LoanManager.BankServer extract( org.omg.CORBA.Any a )
     {
         if ( !a.type().equivalent( type() ) )
         {
@@ -31,7 +31,7 @@ public class BankServerHelper
         }
         try
         {
-            return BankServerHelper.narrow( a.extract_Object() );
+            return Transport.Corba.LoanManager.BankServerHelper.narrow( a.extract_Object() );
         }
         catch ( final org.omg.CORBA.BAD_PARAM e )
         {
@@ -73,9 +73,9 @@ public class BankServerHelper
      * @param istream the input stream
      * @return the readed BankServer value
      */
-    public static BankServer read(org.omg.CORBA.portable.InputStream istream)
+    public static Transport.Corba.LoanManager.BankServer read(org.omg.CORBA.portable.InputStream istream)
     {
-        return(BankServer)istream.read_Object(_BankServerStub.class);
+        return(Transport.Corba.LoanManager.BankServer)istream.read_Object(Transport.Corba.LoanManager._BankServerStub.class);
     }
 
     /**
@@ -83,7 +83,7 @@ public class BankServerHelper
      * @param ostream the output stream
      * @param value BankServer value
      */
-    public static void write(org.omg.CORBA.portable.OutputStream ostream, BankServer value)
+    public static void write(org.omg.CORBA.portable.OutputStream ostream, Transport.Corba.LoanManager.BankServer value)
     {
         ostream.write_Object((org.omg.CORBA.portable.ObjectImpl)value);
     }

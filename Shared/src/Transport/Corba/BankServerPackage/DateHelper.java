@@ -27,9 +27,9 @@ public class DateHelper
      * @param a an any
      * @param t Date value
      */
-    public static void insert(org.omg.CORBA.Any a, Date t)
+    public static void insert(org.omg.CORBA.Any a, Transport.Corba.BankServerPackage.Date t)
     {
-        a.insert_Streamable(new DateHolder(t));
+        a.insert_Streamable(new Transport.Corba.BankServerPackage.DateHolder(t));
     }
 
     /**
@@ -38,7 +38,7 @@ public class DateHelper
      * @param a an any
      * @return the extracted Date value
      */
-    public static Date extract( org.omg.CORBA.Any a )
+    public static Transport.Corba.BankServerPackage.Date extract( org.omg.CORBA.Any a )
     {
         if ( !a.type().equivalent( type() ) )
         {
@@ -49,13 +49,13 @@ public class DateHelper
             org.openorb.orb.core.Any any = (org.openorb.orb.core.Any)a;
             try {
                 org.omg.CORBA.portable.Streamable s = any.extract_Streamable();
-                if ( s instanceof DateHolder )
-                    return ( ( DateHolder ) s ).value;
+                if ( s instanceof Transport.Corba.BankServerPackage.DateHolder )
+                    return ( ( Transport.Corba.BankServerPackage.DateHolder ) s ).value;
             }
             catch ( org.omg.CORBA.BAD_INV_ORDER ex )
             {
             }
-            DateHolder h = new DateHolder( read( a.create_input_stream() ) );
+            Transport.Corba.BankServerPackage.DateHolder h = new Transport.Corba.BankServerPackage.DateHolder( read( a.create_input_stream() ) );
             a.insert_Streamable( h );
             return h.value;
         }
@@ -116,9 +116,9 @@ public class DateHelper
      * @param istream the input stream
      * @return the readed Date value
      */
-    public static Date read(org.omg.CORBA.portable.InputStream istream)
+    public static Transport.Corba.BankServerPackage.Date read(org.omg.CORBA.portable.InputStream istream)
     {
-        Date new_one = new Date();
+        Transport.Corba.BankServerPackage.Date new_one = new Transport.Corba.BankServerPackage.Date();
 
         new_one.year = istream.read_long();
         new_one.month = istream.read_long();
@@ -132,7 +132,7 @@ public class DateHelper
      * @param ostream the output stream
      * @param value Date value
      */
-    public static void write(org.omg.CORBA.portable.OutputStream ostream, Date value)
+    public static void write(org.omg.CORBA.portable.OutputStream ostream, Transport.Corba.BankServerPackage.Date value)
     {
         ostream.write_long( value.year );
         ostream.write_long( value.month );

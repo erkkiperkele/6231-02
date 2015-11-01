@@ -25,7 +25,7 @@ public final class Loan implements org.omg.CORBA.portable.IDLEntity
     /**
      * Struct member dueDate
      */
-    public Date dueDate;
+    public Transport.Corba.BankServerPackage.Date dueDate;
 
     /**
      * Default constructor
@@ -40,7 +40,7 @@ public final class Loan implements org.omg.CORBA.portable.IDLEntity
      * @param amount amount struct member
      * @param dueDate dueDate struct member
      */
-    public Loan(short loanNumber, short customerAccountNumber, int amount, Date dueDate)
+    public Loan(short loanNumber, short customerAccountNumber, int amount, Transport.Corba.BankServerPackage.Date dueDate)
     {
         this.loanNumber = loanNumber;
         this.customerAccountNumber = customerAccountNumber;

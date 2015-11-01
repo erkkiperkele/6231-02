@@ -1,13 +1,15 @@
 package Transport.Corba.Helpers;
 
-import Data.CustomerInfo;
+import Transport.Corba.BankServerPackage.*;
+import Transport.Corba.BankServerPackage.Account;
 import Transport.Corba.BankServerPackage.Bank;
 import Transport.Corba.BankServerPackage.Customer;
 import Transport.Corba.BankServerPackage.Loan;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 public class ObjectMapper {
 
@@ -35,15 +37,17 @@ public class ObjectMapper {
         return mapToCorbaObject(serverLoan);
     }
 
-    //REFACTOR: pass a customerInfo[] in Corba IDL instead of managing a string.
-    public static String toCorbaCustomersInfo(CustomerInfo[] customersInfo) {
+    public static BankInfo toCorbaBankInfo(Data.CustomerInfo[] customersInfo) {
 
-        String corbaCustomersInfo = "";
-        for(CustomerInfo customerInfo : customersInfo)
-        {
-            corbaCustomersInfo += mapToCorbaObject(customerInfo);
+        List<Transport.Corba.BankServerPackage.CustomerInfo> corbaCustomers = new ArrayList<>();
+
+        for (Data.CustomerInfo customerInfo : customersInfo) {
+            corbaCustomers.add(mapToCorbaObject(customerInfo));
         }
-        return corbaCustomersInfo;
+
+        return new BankInfo(
+                corbaCustomers.stream().toArray(Transport.Corba.BankServerPackage.CustomerInfo[]::new)
+        );
     }
 
     public static Data.Customer toCustomer(Transport.Corba.BankServerPackage.Customer corbaCustomer) {
@@ -84,9 +88,15 @@ public class ObjectMapper {
         return mapToClientObject(currentDueDate);
     }
 
-    public static CustomerInfo[] toCustomersInfo(String customersInfo) {
+    public static Data.CustomerInfo[] toCustomersInfo(BankInfo bankInfo) {
 
-        throw new NotImplementedException();
+        Data.CustomerInfo[] customersInfo = new Data.CustomerInfo[0];
+        try {
+            customersInfo = mapToClientObject(bankInfo);
+        } catch (ObjectMappingException e) {
+            e.printStackTrace();
+        }
+        return customersInfo;
     }
 
     private static Bank mapToCorbaObject(Data.Bank source) throws ObjectMappingException {
@@ -115,12 +125,12 @@ public class ObjectMapper {
 
     private static Customer mapToCorbaObject(Data.Customer customer) {
         return new Customer(
-                (short)customer.getId(),
+                (short) customer.getId(),
                 customer.getFirstName(),
                 customer.getLastName(),
                 customer.getEmail(),
                 toCorbaBank(customer.getBank()),
-                (short)customer.getAccountNumber(),
+                (short) customer.getAccountNumber(),
                 customer.getPhone(),
                 customer.getPassword()
         );
@@ -130,26 +140,43 @@ public class ObjectMapper {
         Calendar cal = Calendar.getInstance();
         cal.setTime(date);
         int year = cal.get(cal.YEAR);
-        int month = cal.get(cal.MONTH)+1;
+        int month = cal.get(cal.MONTH) + 1;
         int day = cal.get(cal.DAY_OF_MONTH);
         return new Transport.Corba.BankServerPackage.Date(year, month, day);
     }
 
-    private static Transport.Corba.BankServerPackage.Loan mapToCorbaObject(Data.Loan serverLoan){
+    private static Transport.Corba.BankServerPackage.Loan mapToCorbaObject(Data.Loan serverLoan) {
 
         Transport.Corba.BankServerPackage.Loan corbaLoan = new Loan(
-                (short)serverLoan.getLoanNumber(),
-                (short)serverLoan.getCustomerAccountNumber(),
-                (int)serverLoan.getAmount(),
+                (short) serverLoan.getLoanNumber(),
+                (short) serverLoan.getCustomerAccountNumber(),
+                (int) serverLoan.getAmount(),
                 mapToCorbaObject(serverLoan.getDueDate())
         );
 
         return corbaLoan;
     }
 
-    private static String mapToCorbaObject(CustomerInfo customerInfo){
+    private static Transport.Corba.BankServerPackage.CustomerInfo mapToCorbaObject(Data.CustomerInfo customerInfo) {
 
-        return customerInfo.toString();
+        List<Loan> loans = new ArrayList<>();
+        for (Data.Loan loan : customerInfo.getLoans()) {
+            loans.add(mapToCorbaObject(loan));
+        }
+
+        return new Transport.Corba.BankServerPackage.CustomerInfo(
+                customerInfo.getUserName(),
+                mapToCorbaObject(customerInfo.getAccount()),
+                loans.stream().toArray(Loan[]::new)
+        );
+    }
+
+    private static Transport.Corba.BankServerPackage.Account mapToCorbaObject(Data.Account account) {
+        return new Account(
+                (short) account.getAccountNumber(),
+                mapToCorbaObject(account.getOwner()),
+                (short) account.getCreditLimit()
+        );
     }
 
     private static Data.Bank mapToClientObject(Bank source) throws ObjectMappingException {
@@ -206,8 +233,44 @@ public class ObjectMapper {
         Calendar calendar = Calendar.getInstance();
         calendar.clear();
         calendar.set(Calendar.DAY_OF_MONTH, corbaDate.day);
-        calendar.set(Calendar.MONTH, corbaDate.month -1);
+        calendar.set(Calendar.MONTH, corbaDate.month - 1);
         calendar.set(Calendar.YEAR, corbaDate.year);
         return calendar.getTime();
+    }
+
+    private static Data.CustomerInfo[] mapToClientObject(BankInfo bankInfo) throws ObjectMappingException {
+        List<Data.CustomerInfo> customersInfo = new ArrayList<>();
+
+        Transport.Corba.BankServerPackage.CustomerInfo[] corbaCustomersInfos = bankInfo.customersInfo;
+        for (Transport.Corba.BankServerPackage.CustomerInfo customerInfo : corbaCustomersInfos) {
+            customersInfo.add(mapToClientObject(customerInfo));
+        }
+
+        return customersInfo.stream().toArray(Data.CustomerInfo[]::new);
+    }
+
+    private static Data.CustomerInfo mapToClientObject(Transport.Corba.BankServerPackage.CustomerInfo corbaCustomerInfo)
+            throws ObjectMappingException {
+
+        List<Data.Loan> loans = new ArrayList<>();
+
+        for (Transport.Corba.BankServerPackage.Loan loan : corbaCustomerInfo.loans) {
+            loans.add(mapToClientObject(loan));
+        }
+
+        return new Data.CustomerInfo(
+                mapToClientObject(corbaCustomerInfo.account),
+                loans
+        );
+    }
+
+    private static Data.Account mapToClientObject(Transport.Corba.BankServerPackage.Account corbaAccount) throws ObjectMappingException {
+
+        return new Data.Account(
+                corbaAccount.accountNumber,
+                mapToClientObject(corbaAccount.owner),
+                corbaAccount.creditLimit
+        );
+
     }
 }

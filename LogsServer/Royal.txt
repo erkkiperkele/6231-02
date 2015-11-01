@@ -276,3 +276,151 @@ Sat Oct 31 15:21:55 EDT 2015 INFO: new account created for Maria (account #4)
 Sat Oct 31 15:21:55 EDT 2015 INFO: Thread #1 CREATED account for Sylvain
 Sat Oct 31 15:21:55 EDT 2015 INFO: new account created for Sylvain (account #5)
 Sat Oct 31 15:22:08 EDT 2015 INFO: Due date for loan #2 changed to 01-12-2016
+Sat Oct 31 18:53:34 EDT 2015 INFO: Thread #1 CREATED account for Alex
+Sat Oct 31 18:53:34 EDT 2015 INFO: new account created for Alex (account #2)
+Sat Oct 31 18:53:34 EDT 2015 INFO: Thread #1 CREATED account for Justin
+Sat Oct 31 18:53:34 EDT 2015 INFO: new account created for Justin (account #3)
+Sat Oct 31 18:53:34 EDT 2015 INFO: Thread #1 CREATED account for Maria
+Sat Oct 31 18:53:34 EDT 2015 INFO: new account created for Maria (account #4)
+Sat Oct 31 18:53:34 EDT 2015 INFO: Thread #1 CREATED account for Sylvain
+Sat Oct 31 18:53:34 EDT 2015 INFO: new account created for Sylvain (account #5)
+Sat Oct 31 19:07:03 EDT 2015 INFO: Thread #1 CREATED account for Alex
+Sat Oct 31 19:07:03 EDT 2015 INFO: new account created for Alex (account #2)
+Sat Oct 31 19:07:03 EDT 2015 INFO: Thread #1 CREATED account for Justin
+Sat Oct 31 19:07:03 EDT 2015 INFO: new account created for Justin (account #3)
+Sat Oct 31 19:07:03 EDT 2015 INFO: Thread #1 CREATED account for Maria
+Sat Oct 31 19:07:03 EDT 2015 INFO: new account created for Maria (account #4)
+Sat Oct 31 19:07:03 EDT 2015 INFO: Thread #1 CREATED account for Sylvain
+Sat Oct 31 19:07:03 EDT 2015 INFO: new account created for Sylvain (account #5)
+Sat Oct 31 19:15:48 EDT 2015 INFO: Thread #12 CREATED account for Aymeric
+Sat Oct 31 19:15:48 EDT 2015 INFO: new account created for Aymeric (account #6)
+Sat Oct 31 19:45:31 EDT 2015 INFO: Thread #1 CREATED account for Alex
+Sat Oct 31 19:45:31 EDT 2015 INFO: new account created for Alex (account #2)
+Sat Oct 31 19:45:31 EDT 2015 INFO: Thread #1 CREATED account for Justin
+Sat Oct 31 19:45:31 EDT 2015 INFO: new account created for Justin (account #3)
+Sat Oct 31 19:45:31 EDT 2015 INFO: Thread #1 CREATED account for Maria
+Sat Oct 31 19:45:31 EDT 2015 INFO: new account created for Maria (account #4)
+Sat Oct 31 19:45:31 EDT 2015 INFO: Thread #1 CREATED account for Sylvain
+Sat Oct 31 19:45:31 EDT 2015 INFO: new account created for Sylvain (account #5)
+Sat Oct 31 19:45:39 EDT 2015 INFO: Thread #12 CREATED account for Aymeric
+Sat Oct 31 19:45:39 EDT 2015 INFO: new account created for Aymeric (account #6)
+Sat Oct 31 19:45:45 EDT 2015 INFO: This Account already exists for Aymeric
+Sat Oct 31 19:47:42 EDT 2015 INFO: Thread #1 CREATED account for Alex
+Sat Oct 31 19:47:42 EDT 2015 INFO: new account created for Alex (account #2)
+Sat Oct 31 19:47:42 EDT 2015 INFO: Thread #1 CREATED account for Justin
+Sat Oct 31 19:47:42 EDT 2015 INFO: new account created for Justin (account #3)
+Sat Oct 31 19:47:42 EDT 2015 INFO: Thread #1 CREATED account for Maria
+Sat Oct 31 19:47:42 EDT 2015 INFO: new account created for Maria (account #4)
+Sat Oct 31 19:47:42 EDT 2015 INFO: Thread #1 CREATED account for Sylvain
+Sat Oct 31 19:47:42 EDT 2015 INFO: new account created for Sylvain (account #5)
+Sat Oct 31 19:47:55 EDT 2015 INFO: Thread #1 CREATED account for Alex
+Sat Oct 31 19:47:55 EDT 2015 INFO: new account created for Alex (account #2)
+Sat Oct 31 19:47:55 EDT 2015 INFO: Thread #1 CREATED account for Justin
+Sat Oct 31 19:47:55 EDT 2015 INFO: new account created for Justin (account #3)
+Sat Oct 31 19:47:55 EDT 2015 INFO: Thread #1 CREATED account for Maria
+Sat Oct 31 19:47:55 EDT 2015 INFO: new account created for Maria (account #4)
+Sat Oct 31 19:47:55 EDT 2015 INFO: Thread #1 CREATED account for Sylvain
+Sat Oct 31 19:47:55 EDT 2015 INFO: new account created for Sylvain (account #5)
+Sat Oct 31 19:48:15 EDT 2015 INFO: Thread #12 CREATED account for Aymeric
+Sat Oct 31 19:48:15 EDT 2015 INFO: new account created for Aymeric (account #6)
+Sat Oct 31 19:49:21 EDT 2015 INFO: Thread #1 CREATED account for Alex
+Sat Oct 31 19:49:21 EDT 2015 INFO: new account created for Alex (account #2)
+Sat Oct 31 19:49:21 EDT 2015 INFO: Thread #1 CREATED account for Justin
+Sat Oct 31 19:49:21 EDT 2015 INFO: new account created for Justin (account #3)
+Sat Oct 31 19:49:21 EDT 2015 INFO: Thread #1 CREATED account for Maria
+Sat Oct 31 19:49:21 EDT 2015 INFO: new account created for Maria (account #4)
+Sat Oct 31 19:49:21 EDT 2015 INFO: Thread #1 CREATED account for Sylvain
+Sat Oct 31 19:49:21 EDT 2015 INFO: new account created for Sylvain (account #5)
+Sat Oct 31 19:49:30 EDT 2015 INFO: Thread #12 CREATED account for Aymeric
+Sat Oct 31 19:49:30 EDT 2015 INFO: new account created for Aymeric (account #6)
+Sat Oct 31 19:56:13 EDT 2015 INFO: Thread #1 CREATED account for Alex
+Sat Oct 31 19:56:13 EDT 2015 INFO: new account created for Alex (account #2)
+Sat Oct 31 19:56:13 EDT 2015 INFO: Thread #1 CREATED account for Justin
+Sat Oct 31 19:56:13 EDT 2015 INFO: new account created for Justin (account #3)
+Sat Oct 31 19:56:13 EDT 2015 INFO: Thread #1 CREATED account for Maria
+Sat Oct 31 19:56:13 EDT 2015 INFO: new account created for Maria (account #4)
+Sat Oct 31 19:56:13 EDT 2015 INFO: Thread #1 CREATED account for Sylvain
+Sat Oct 31 19:56:13 EDT 2015 INFO: new account created for Sylvain (account #5)
+Sat Oct 31 19:56:22 EDT 2015 INFO: Thread #12 CREATED account for Aymeric
+Sat Oct 31 19:56:22 EDT 2015 INFO: new account created for Aymeric (account #6)
+Sat Oct 31 19:56:40 EDT 2015 INFO: Thread #1 CREATED account for Alex
+Sat Oct 31 19:56:40 EDT 2015 INFO: new account created for Alex (account #2)
+Sat Oct 31 19:56:40 EDT 2015 INFO: Thread #1 CREATED account for Justin
+Sat Oct 31 19:56:40 EDT 2015 INFO: new account created for Justin (account #3)
+Sat Oct 31 19:56:40 EDT 2015 INFO: Thread #1 CREATED account for Maria
+Sat Oct 31 19:56:40 EDT 2015 INFO: new account created for Maria (account #4)
+Sat Oct 31 19:56:40 EDT 2015 INFO: Thread #1 CREATED account for Sylvain
+Sat Oct 31 19:56:40 EDT 2015 INFO: new account created for Sylvain (account #5)
+Sat Oct 31 19:56:48 EDT 2015 INFO: Thread #12 CREATED account for Aymeric
+Sat Oct 31 19:56:48 EDT 2015 INFO: new account created for Aymeric (account #6)
+Sat Oct 31 19:57:02 EDT 2015 INFO: This Account already exists for Aymeric
+Sat Oct 31 19:58:47 EDT 2015 INFO: Thread #1 CREATED account for Alex
+Sat Oct 31 19:58:47 EDT 2015 INFO: new account created for Alex (account #2)
+Sat Oct 31 19:58:47 EDT 2015 INFO: Thread #1 CREATED account for Justin
+Sat Oct 31 19:58:47 EDT 2015 INFO: new account created for Justin (account #3)
+Sat Oct 31 19:58:47 EDT 2015 INFO: Thread #1 CREATED account for Maria
+Sat Oct 31 19:58:47 EDT 2015 INFO: new account created for Maria (account #4)
+Sat Oct 31 19:58:47 EDT 2015 INFO: Thread #1 CREATED account for Sylvain
+Sat Oct 31 19:58:47 EDT 2015 INFO: new account created for Sylvain (account #5)
+Sat Oct 31 19:58:59 EDT 2015 INFO: Thread #12 CREATED account for Aymeric
+Sat Oct 31 19:58:59 EDT 2015 INFO: new account created for Aymeric (account #6)
+Sat Oct 31 20:00:28 EDT 2015 INFO: Thread #1 CREATED account for Alex
+Sat Oct 31 20:00:28 EDT 2015 INFO: new account created for Alex (account #2)
+Sat Oct 31 20:00:28 EDT 2015 INFO: Thread #1 CREATED account for Justin
+Sat Oct 31 20:00:28 EDT 2015 INFO: new account created for Justin (account #3)
+Sat Oct 31 20:00:28 EDT 2015 INFO: Thread #1 CREATED account for Maria
+Sat Oct 31 20:00:28 EDT 2015 INFO: new account created for Maria (account #4)
+Sat Oct 31 20:00:28 EDT 2015 INFO: Thread #1 CREATED account for Sylvain
+Sat Oct 31 20:00:28 EDT 2015 INFO: new account created for Sylvain (account #5)
+Sat Oct 31 20:00:42 EDT 2015 INFO: Thread #13 CREATED account for Aymeric
+Sat Oct 31 20:00:42 EDT 2015 INFO: new account created for Aymeric (account #6)
+Sat Oct 31 20:03:51 EDT 2015 INFO: Thread #1 CREATED account for Alex
+Sat Oct 31 20:03:51 EDT 2015 INFO: new account created for Alex (account #2)
+Sat Oct 31 20:03:51 EDT 2015 INFO: Thread #1 CREATED account for Justin
+Sat Oct 31 20:03:51 EDT 2015 INFO: new account created for Justin (account #3)
+Sat Oct 31 20:03:51 EDT 2015 INFO: Thread #1 CREATED account for Maria
+Sat Oct 31 20:03:51 EDT 2015 INFO: new account created for Maria (account #4)
+Sat Oct 31 20:03:51 EDT 2015 INFO: Thread #1 CREATED account for Sylvain
+Sat Oct 31 20:03:51 EDT 2015 INFO: new account created for Sylvain (account #5)
+Sat Oct 31 20:04:10 EDT 2015 INFO: Thread #13 CREATED account for Aymeric
+Sat Oct 31 20:04:10 EDT 2015 INFO: new account created for Aymeric (account #6)
+Sat Oct 31 20:04:16 EDT 2015 INFO: new Loan accepted for Aymeric (100$), current credit: 100$
+Sat Oct 31 20:07:01 EDT 2015 INFO: Due date for loan #2 changed to 01-12-2016
+Sat Oct 31 20:32:20 EDT 2015 INFO: Thread #1 CREATED account for Alex
+Sat Oct 31 20:32:20 EDT 2015 INFO: new account created for Alex (account #2)
+Sat Oct 31 20:32:20 EDT 2015 INFO: Thread #1 CREATED account for Justin
+Sat Oct 31 20:32:20 EDT 2015 INFO: new account created for Justin (account #3)
+Sat Oct 31 20:32:20 EDT 2015 INFO: Thread #1 CREATED account for Maria
+Sat Oct 31 20:32:20 EDT 2015 INFO: new account created for Maria (account #4)
+Sat Oct 31 20:32:20 EDT 2015 INFO: Thread #1 CREATED account for Sylvain
+Sat Oct 31 20:32:20 EDT 2015 INFO: new account created for Sylvain (account #5)
+Sat Oct 31 20:32:37 EDT 2015 INFO: Due date for loan #2 changed to 01-12-2016
+Sat Oct 31 20:32:40 EDT 2015 INFO: Server returned 4 customers info
+Sat Oct 31 20:36:09 EDT 2015 INFO: Thread #1 CREATED account for Alex
+Sat Oct 31 20:36:09 EDT 2015 INFO: new account created for Alex (account #2)
+Sat Oct 31 20:36:09 EDT 2015 INFO: Thread #1 CREATED account for Justin
+Sat Oct 31 20:36:09 EDT 2015 INFO: new account created for Justin (account #3)
+Sat Oct 31 20:36:09 EDT 2015 INFO: Thread #1 CREATED account for Maria
+Sat Oct 31 20:36:09 EDT 2015 INFO: new account created for Maria (account #4)
+Sat Oct 31 20:36:09 EDT 2015 INFO: Thread #1 CREATED account for Sylvain
+Sat Oct 31 20:36:09 EDT 2015 INFO: new account created for Sylvain (account #5)
+Sat Oct 31 20:36:09 EDT 2015 INFO: Thread #11 CREATED account for Concurrent2
+Sat Oct 31 20:36:09 EDT 2015 INFO: Thread #10 CREATED account for Concurrent1
+Sat Oct 31 20:36:09 EDT 2015 INFO: new account created for Concurrent2 (account #7)
+Sat Oct 31 20:36:09 EDT 2015 INFO: new account created for Concurrent1 (account #6)
+Sat Oct 31 20:36:09 EDT 2015 INFO: Thread #12 CREATED account for Concurrent3
+Sat Oct 31 20:36:09 EDT 2015 INFO: new account created for Concurrent3 (account #8)
+Sat Oct 31 20:36:09 EDT 2015 INFO: Thread #13 CREATED account for Concurrent4
+Sat Oct 31 20:36:09 EDT 2015 INFO: new account created for Concurrent4 (account #9)
+Sat Oct 31 20:36:09 EDT 2015 INFO: Thread #14 CREATED account for Concurrent5
+Sat Oct 31 20:36:09 EDT 2015 INFO: new account created for Concurrent5 (account #10)
+Sat Oct 31 20:36:09 EDT 2015 INFO: Thread #15 CREATED account for Concurrent6
+Sat Oct 31 20:36:09 EDT 2015 INFO: Thread #16 CREATED account for Concurrent7
+Sat Oct 31 20:36:09 EDT 2015 INFO: new account created for Concurrent6 (account #11)
+Sat Oct 31 20:36:09 EDT 2015 INFO: new account created for Concurrent7 (account #12)
+Sat Oct 31 20:36:09 EDT 2015 INFO: Thread #17 CREATED account for Concurrent8
+Sat Oct 31 20:36:09 EDT 2015 INFO: new account created for Concurrent8 (account #13)
+Sat Oct 31 20:36:09 EDT 2015 INFO: This Account already exists for Concurrent1
+Sat Oct 31 20:36:14 EDT 2015 INFO: new Loan accepted for Alex (200$), current credit: 700$
+Sat Oct 31 20:36:14 EDT 2015 INFO: Server returned 12 customers info
+Sat Oct 31 20:36:14 EDT 2015 INFO: Due date for loan #2 changed to 18-12-2016
