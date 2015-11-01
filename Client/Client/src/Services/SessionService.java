@@ -43,6 +43,11 @@ public class SessionService implements ISessionService {
     }
 
     @Override
+    public boolean isLoggedIn() {
+        return currentCustomer.getAccountNumber() != 0;
+    }
+
+    @Override
     public IFileLogger log() {
         return this.loggerService.getLogger();
     }

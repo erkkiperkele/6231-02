@@ -25,6 +25,12 @@ public interface ISessionService {
     Customer getCurrentCustomer();
 
     /**
+     * indicates if a user is logged in.
+     * @return
+     */
+    boolean isLoggedIn();
+
+    /**
      * accesses the current customer's logger
      * @return
      */

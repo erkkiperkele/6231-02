@@ -2,7 +2,7 @@ package Transport.UDP;
 
 import java.io.Serializable;
 
-public class GetAccountMessage implements Serializable {
+public class GetAccountMessage implements Serializable, IOperationMessage {
 
 
     private String firstName;

@@ -2,7 +2,9 @@ package Transport.UDP;
 
 import Data.Customer;
 
-public class CreateAccountMessage {
+import java.io.Serializable;
+
+public class CreateAccountMessage implements Serializable, IOperationMessage{
 
 
     private Customer customer;

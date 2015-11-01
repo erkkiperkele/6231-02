@@ -3,7 +3,9 @@ package Transport.UDP;
 import Data.Account;
 import Data.Loan;
 
-public class CreateLoanMessage {
+import java.io.Serializable;
+
+public class CreateLoanMessage implements Serializable, IOperationMessage{
 
     private Account account;
     private Loan loan;

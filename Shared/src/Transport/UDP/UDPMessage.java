@@ -1,6 +1,8 @@
 package Transport.UDP;
 
-public class UDPMessage {
+import java.io.Serializable;
+
+public class UDPMessage implements Serializable {
 
     private IOperationMessage message;
     private OperationType operation;

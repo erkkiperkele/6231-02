@@ -246,6 +246,19 @@ public class DataRepository {
         return customersInfo;
     }
 
+    /**
+     * Deletes a given loan
+     * @param username
+     * @param loanNumber
+     * @return
+     */
+    public boolean deleteLoan(String username, int loanNumber) {
+
+        String index = getIndex(username);
+        List<Loan> loans = getLoansAtIndex(index);
+        return loans.removeIf(l -> l.getLoanNumber() == loanNumber);
+    }
+
     private Customer getCustomerByLoanId(int loanId) {
         Customer customer = null;
 
@@ -410,11 +423,5 @@ public class DataRepository {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-    }
-
-    public boolean deleteLoan(String username, int loanNumber) {
-
-        List<Loan> loans = getLoansAtIndex(username);
-        return loans.removeIf(l -> l.getLoanNumber() == loanNumber);
     }
 }

@@ -75,6 +75,8 @@ public class CustomerConsole {
 
     private static void displayGetLoan() {
 
+        displaySignInIfNeeded();
+
         Customer customer = SessionService.getInstance().getCurrentCustomer();
         long loanAmount = askLoanAmount();
 
@@ -83,7 +85,9 @@ public class CustomerConsole {
 
         if (newLoan != null && newLoan.getAmount() > 0) {
             SessionService.getInstance().log().info(
-                    String.format("New loan granted for an amount of %1$s $", newLoan.getAmount())
+                    String.format("New loan (#%1$d) granted for an amount of %2$s $",
+                            newLoan.getLoanNumber(),
+                            newLoan.getAmount())
             );
         }
         else{
@@ -95,6 +99,7 @@ public class CustomerConsole {
 
     private static void displayTransferLoan() {
 
+        displaySignInIfNeeded();
         Customer customer = SessionService.getInstance().getCurrentCustomer();
 
         int loanId = askLoanId();
@@ -138,6 +143,15 @@ public class CustomerConsole {
             displaySignin();
         }
 
+    }
+
+    private static void displaySignInIfNeeded() {
+        boolean isLoggedIn = SessionService.getInstance().isLoggedIn();
+        if (!isLoggedIn)
+        {
+            console.println("Please sign in before to process.");
+            displaySignin();
+        }
     }
 
     private static void displayOpenAccount() {

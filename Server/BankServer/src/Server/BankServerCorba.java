@@ -23,9 +23,6 @@ public class BankServerCorba extends BankServerPOA {
         this.serverPort = serverPort;
     }
 
-
-    //TODO: Implement the methods!
-
     @Override
     public short openAccount(Bank bank, String firstName, String lastName, String emailAddress, String phoneNumber, String password) {
         System.out.println("openning account!!!!");
@@ -100,7 +97,6 @@ public class BankServerCorba extends BankServerPOA {
         }
     }
 
-    //TODO: Real implementation!
     @Override
     public Loan transferLoan(short loanId, Bank currentBank, Bank otherBank) throws TransferException {
 

@@ -4,6 +4,7 @@ import Contracts.ICustomerService;
 import Data.Account;
 import Data.Loan;
 import Data.ServerPorts;
+import Services.BankService;
 import Services.SessionService;
 import Transport.UDP.*;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
@@ -109,6 +110,10 @@ public class UDPServer {
 
         GetLoanMessage loanMessage = (GetLoanMessage) message;
 
+        SessionService.getInstance().log().info(
+                String.format("[UDP] Received a UDP request to get %1$s's credit line", loanMessage.getFirstName())
+        );
+
         Account account = this.customerService.getAccount(loanMessage.getFirstName(), loanMessage.getLastName());
 
         if (account != null) {
@@ -133,11 +138,27 @@ public class UDPServer {
         return serializedLoan;
     }
 
+    /**
+     * Note this calls a restricted operation in order to get a loan without checking the credit line
+     * This is only accepted in case of a transfer where a loan is already existing.
+     * @param message
+     * @return
+     * @throws FailedLoginException
+     * @throws IOException
+     */
     private byte[] processCreateLoanMessage(IOperationMessage message) throws FailedLoginException, IOException {
 
         CreateLoanMessage loanMessage = (CreateLoanMessage) message;
 
-        Loan loan= this.customerService.getLoan(
+        SessionService.getInstance().log().info(
+                String.format("[UDP] Received a UDP request for %1$s to obtain a new loan of %2$d$",
+                        loanMessage.getAccount().getOwner().getFirstName(),
+                        loanMessage.getLoan().getAmount())
+        );
+
+
+        //REFACTOR: Should not cast interface to its implementation to access restricted operation
+        Loan loan= ((BankService)this.customerService).getLoanWithNoCreditLineCheck(
                 SessionService.getInstance().getBank(),
                 loanMessage.getAccount().getAccountNumber(),
                 loanMessage.getAccount().getOwner().getPassword(),
@@ -153,6 +174,11 @@ public class UDPServer {
 
         GetAccountMessage accountMessage = (GetAccountMessage) message;
 
+        SessionService.getInstance().log().info(
+                String.format("[UDP] Received a UDP request to retrieve %1$s's account",
+                        accountMessage.getFirstName())
+        );
+
         Account account= this.customerService.getAccount(
                 accountMessage.getFirstName(),
                 accountMessage.getLastName()
@@ -164,7 +190,13 @@ public class UDPServer {
     }
 
     private byte[] processCreateAccountMessage(IOperationMessage message) throws IOException {
+
         CreateAccountMessage accountMessage = (CreateAccountMessage) message;
+
+        SessionService.getInstance().log().info(
+                String.format("[UDP] Received a UDP request to create an account for %1$s",
+                        accountMessage.getCustomer().getFirstName())
+        );
 
         int accountId = this.customerService.openAccount(
                 SessionService.getInstance().getBank(),
