@@ -1,0 +1,14 @@
+Contracts
+Data
+Exceptions
+Helpers
+IO
+Presentation
+Server
+Services
+Tests.BankService
+Transport
+Transport.Corba.BankServerPackage
+Transport.Corba.Helpers
+Transport.Corba.LoanManager
+Transport.UDP
