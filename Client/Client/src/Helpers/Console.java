@@ -16,6 +16,7 @@ public class Console {
 
     /**
      * Provides a new line in a platform independent manner
+     *
      * @return
      */
     public String newLine() {
@@ -24,6 +25,7 @@ public class Console {
 
     /**
      * Reads a single char from the console input
+     *
      * @return
      */
     public char readChar() {
@@ -38,6 +40,7 @@ public class Console {
 
     /**
      * reads a string from the console input
+     *
      * @return
      */
     public String readString() {
@@ -46,9 +49,10 @@ public class Console {
 
     /**
      * reads an integer from the console input
+     *
      * @return
      */
-    public int readint() {
+    public int readint() throws NumberFormatException {
         String input = this.readLine().trim();
         int answer = 0;
 
@@ -62,6 +66,7 @@ public class Console {
 
     /**
      * outputs a message to the console
+     *
      * @param message
      */
     public void println(String message) {

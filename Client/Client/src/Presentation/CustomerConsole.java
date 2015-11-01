@@ -89,8 +89,7 @@ public class CustomerConsole {
                             newLoan.getLoanNumber(),
                             newLoan.getAmount())
             );
-        }
-        else{
+        } else {
             SessionService.getInstance().log().warn(
                     String.format("New loan refused for an amount of %1$s $ (check your credit line)", loanAmount)
             );
@@ -119,8 +118,7 @@ public class CustomerConsole {
                             newBank.name(),
                             newLoan.getLoanNumber())
             );
-        }
-        else{
+        } else {
             SessionService.getInstance().log().error(
                     String.format("An error has occurred while transferring the loan #%1$s to bank %2$s, please try again.",
                             loanId,
@@ -147,8 +145,7 @@ public class CustomerConsole {
 
     private static void displaySignInIfNeeded() {
         boolean isLoggedIn = SessionService.getInstance().isLoggedIn();
-        if (!isLoggedIn)
-        {
+        if (!isLoggedIn) {
             console.println("Please sign in before to process.");
             displaySignin();
         }
@@ -180,7 +177,16 @@ public class CustomerConsole {
 
         console.println("Enter bankId");
         console.println(String.format("(1 - %1$s, 2 - %2$s, 3 %3$s): ", Bank.Royal, Bank.National, Bank.Dominion));
-        int userAnswer = console.readint();
+
+        int userAnswer = 0;
+
+        try {
+            userAnswer = console.readint();
+        } catch (NumberFormatException e) {
+            console.println("Wrong value answered. Please chose one of the given options.");
+            askBankId();
+        }
+
         Bank answer = userAnswer == 0
                 ? Bank.Royal
                 : Bank.fromInt(userAnswer);
@@ -250,20 +256,34 @@ public class CustomerConsole {
         console.println("Enter required amount for the loan: ");
         String userAnswer = console.readString();
 
-        long answer = userAnswer.equals("")
-                ? 100
-                : Long.parseLong(userAnswer);
+        long answer = 0;
+        try {
+            answer = userAnswer.equals("")
+                    ? 100
+                    : Long.parseLong(userAnswer);
 
+        } catch (NumberFormatException e) {
+            console.println("Wrong value answered. Please enter a valid amount.");
+            askLoanAmount();
+        }
         displayAnswer(String.valueOf(answer));
         return answer;
     }
 
     private static int askLoanId() {
-        console.println("Enter loanId");
-        int userAnswer = console.readint();
-        int answer = userAnswer == 0
-                ? 2
-                : userAnswer;
+        console.println("Enter loan number");
+        int answer = 0;
+        try {
+
+            int userAnswer = console.readint();
+            answer = userAnswer == 0
+                    ? 2
+                    : userAnswer;
+
+        } catch (NumberFormatException e) {
+            console.println("Wrong value. Please enter a valid Number.");
+            askLoanId();
+        }
 
         displayAnswer(String.valueOf(answer));
         return answer;
@@ -273,10 +293,19 @@ public class CustomerConsole {
 
         console.println("Chose the bank where to transfer the loan");
         console.println(String.format("(1 - %1$s, 2 - %2$s, 3 %3$s): ", Bank.Royal, Bank.National, Bank.Dominion));
-        int userAnswer = console.readint();
-        Bank answer = userAnswer == 0
-                ? Bank.National
-                : Bank.fromInt(userAnswer);
+
+        Bank answer = Bank.None;
+        try {
+            int userAnswer = console.readint();
+            answer = userAnswer == 0
+                    ? Bank.National
+                    : Bank.fromInt(userAnswer);
+
+        } catch (NumberFormatException e) {
+            console.println("Wrong value. Please enter a valid bank.");
+            askNewBank();
+        }
+
 
         displayAnswer(answer.toString());
         return answer;

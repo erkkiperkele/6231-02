@@ -329,3 +329,126 @@ Sat Oct 31 23:24:40 EDT 2015 INFO: Thread #1 CREATED account for Maria
 Sat Oct 31 23:24:40 EDT 2015 INFO: new account created for Maria (account #4)
 Sat Oct 31 23:24:40 EDT 2015 INFO: Thread #1 CREATED account for Pascal
 Sat Oct 31 23:24:40 EDT 2015 INFO: new account created for Pascal (account #5)
+Sun Nov 01 08:43:03 EST 2015 INFO: Thread #1 CREATED account for Alex
+Sun Nov 01 08:43:03 EST 2015 INFO: new account created for Alex (account #2)
+Sun Nov 01 08:43:03 EST 2015 INFO: Thread #1 CREATED account for Justin
+Sun Nov 01 08:43:03 EST 2015 INFO: new account created for Justin (account #3)
+Sun Nov 01 08:43:03 EST 2015 INFO: Thread #1 CREATED account for Maria
+Sun Nov 01 08:43:03 EST 2015 INFO: new account created for Maria (account #4)
+Sun Nov 01 08:43:03 EST 2015 INFO: Thread #1 CREATED account for Pascal
+Sun Nov 01 08:43:03 EST 2015 INFO: new account created for Pascal (account #5)
+Sun Nov 01 08:47:12 EST 2015 INFO: Thread #1 CREATED account for Alex
+Sun Nov 01 08:47:12 EST 2015 INFO: new account created for Alex (account #2)
+Sun Nov 01 08:47:12 EST 2015 INFO: Thread #1 CREATED account for Justin
+Sun Nov 01 08:47:12 EST 2015 INFO: new account created for Justin (account #3)
+Sun Nov 01 08:47:12 EST 2015 INFO: Thread #1 CREATED account for Maria
+Sun Nov 01 08:47:12 EST 2015 INFO: new account created for Maria (account #4)
+Sun Nov 01 08:47:12 EST 2015 INFO: Thread #1 CREATED account for Pascal
+Sun Nov 01 08:47:12 EST 2015 INFO: new account created for Pascal (account #5)
+Sun Nov 01 09:01:41 EST 2015 INFO: Thread #1 CREATED account for Alex
+Sun Nov 01 09:01:41 EST 2015 INFO: new account created for Alex (account #2)
+Sun Nov 01 09:01:41 EST 2015 INFO: Thread #1 CREATED account for Justin
+Sun Nov 01 09:01:41 EST 2015 INFO: new account created for Justin (account #3)
+Sun Nov 01 09:01:41 EST 2015 INFO: Thread #1 CREATED account for Maria
+Sun Nov 01 09:01:41 EST 2015 INFO: new account created for Maria (account #4)
+Sun Nov 01 09:01:41 EST 2015 INFO: Thread #1 CREATED account for Pascal
+Sun Nov 01 09:01:41 EST 2015 INFO: new account created for Pascal (account #5)
+Sun Nov 01 09:02:09 EST 2015 INFO: Aymeric Grail doesn't have a credit record at our bank
+Sun Nov 01 09:04:02 EST 2015 INFO: Aymeric Grail doesn't have a credit record at our bank
+Sun Nov 01 09:15:23 EST 2015 INFO: Thread #1 CREATED account for Alex
+Sun Nov 01 09:15:23 EST 2015 INFO: new account created for Alex (account #2)
+Sun Nov 01 09:15:23 EST 2015 INFO: Thread #1 CREATED account for Justin
+Sun Nov 01 09:15:23 EST 2015 INFO: new account created for Justin (account #3)
+Sun Nov 01 09:15:23 EST 2015 INFO: Thread #1 CREATED account for Maria
+Sun Nov 01 09:15:23 EST 2015 INFO: new account created for Maria (account #4)
+Sun Nov 01 09:15:23 EST 2015 INFO: Thread #1 CREATED account for Pascal
+Sun Nov 01 09:15:23 EST 2015 INFO: new account created for Pascal (account #5)
+Sun Nov 01 09:16:02 EST 2015 INFO: Aymeric Grail doesn't have a credit record at our bank
+Sun Nov 01 09:16:35 EST 2015 INFO: Aymeric Grail doesn't have a credit record at our bank
+Sun Nov 01 09:16:47 EST 2015 INFO: Thread #10 CREATED account for Aymeric
+Sun Nov 01 09:16:47 EST 2015 INFO: new account created for Aymeric (account #6)
+Sun Nov 01 09:17:07 EST 2015 INFO: new Loan accepted for Aymeric (100$), current credit: 300$
+Sun Nov 01 09:28:29 EST 2015 INFO: Thread #1 CREATED account for Alex
+Sun Nov 01 09:28:29 EST 2015 INFO: new account created for Alex (account #2)
+Sun Nov 01 09:28:29 EST 2015 INFO: Thread #1 CREATED account for Justin
+Sun Nov 01 09:28:29 EST 2015 INFO: new account created for Justin (account #3)
+Sun Nov 01 09:28:29 EST 2015 INFO: Thread #1 CREATED account for Maria
+Sun Nov 01 09:28:29 EST 2015 INFO: new account created for Maria (account #4)
+Sun Nov 01 09:28:29 EST 2015 INFO: Thread #1 CREATED account for Pascal
+Sun Nov 01 09:28:29 EST 2015 INFO: new account created for Pascal (account #5)
+Sun Nov 01 09:28:46 EST 2015 INFO: [UDP] Received a UDP request to get Aymeric's credit line
+Sun Nov 01 09:28:46 EST 2015 INFO: Aymeric Grail doesn't have a credit record at our bank
+Sun Nov 01 09:29:05 EST 2015 INFO: [UDP] Received a UDP request to retrieve Aymeric's account
+Sun Nov 01 09:29:05 EST 2015 INFO: [UDP] Received a UDP request to create an account for Aymeric
+Sun Nov 01 09:29:05 EST 2015 INFO: Thread #10 CREATED account for Aymeric
+Sun Nov 01 09:29:05 EST 2015 INFO: new account created for Aymeric (account #6)
+Sun Nov 01 09:29:05 EST 2015 INFO: [UDP] Received a UDP request for Aymeric to obtain a new loan of 100$
+Sun Nov 01 09:29:25 EST 2015 INFO: new Loan accepted for Aymeric (100$), current credit: 200$
+Sun Nov 01 09:57:36 EST 2015 INFO: Thread #1 CREATED account for Alex
+Sun Nov 01 09:57:36 EST 2015 INFO: new account created for Alex (account #2)
+Sun Nov 01 09:57:36 EST 2015 INFO: Thread #1 CREATED account for Justin
+Sun Nov 01 09:57:36 EST 2015 INFO: new account created for Justin (account #3)
+Sun Nov 01 09:57:36 EST 2015 INFO: Thread #1 CREATED account for Maria
+Sun Nov 01 09:57:36 EST 2015 INFO: new account created for Maria (account #4)
+Sun Nov 01 09:57:36 EST 2015 INFO: Thread #1 CREATED account for Pascal
+Sun Nov 01 09:57:36 EST 2015 INFO: new account created for Pascal (account #5)
+Sun Nov 01 09:57:52 EST 2015 INFO: [UDP] Received a UDP request to get Aymeric's credit line
+Sun Nov 01 09:57:52 EST 2015 INFO: Aymeric Grail doesn't have a credit record at our bank
+Sun Nov 01 09:58:02 EST 2015 INFO: [UDP] Received a UDP request to retrieve Aymeric's account
+Sun Nov 01 09:58:02 EST 2015 INFO: [UDP] Received a UDP request to create an account for Aymeric
+Sun Nov 01 09:58:02 EST 2015 INFO: Thread #10 CREATED account for Aymeric
+Sun Nov 01 09:58:02 EST 2015 INFO: new account created for Aymeric (account #6)
+Sun Nov 01 09:58:02 EST 2015 INFO: [UDP] Received a UDP request for Aymeric to obtain a new loan of 100$
+Sun Nov 01 09:58:02 EST 2015 INFO: new Loan accepted for Aymeric (100$), current credit: 100$
+Sun Nov 01 10:13:38 EST 2015 INFO: Thread #1 CREATED account for Alex
+Sun Nov 01 10:13:38 EST 2015 INFO: new account created for Alex (account #2)
+Sun Nov 01 10:13:38 EST 2015 INFO: Thread #1 CREATED account for Justin
+Sun Nov 01 10:13:38 EST 2015 INFO: new account created for Justin (account #3)
+Sun Nov 01 10:13:38 EST 2015 INFO: Thread #1 CREATED account for Maria
+Sun Nov 01 10:13:38 EST 2015 INFO: new account created for Maria (account #4)
+Sun Nov 01 10:13:38 EST 2015 INFO: Thread #1 CREATED account for Pascal
+Sun Nov 01 10:13:38 EST 2015 INFO: new account created for Pascal (account #5)
+Sun Nov 01 10:14:21 EST 2015 INFO: [UDP] Received a UDP request to get Aymeric's credit line
+Sun Nov 01 10:14:21 EST 2015 INFO: Aymeric Grail doesn't have a credit record at our bank
+Sun Nov 01 10:14:44 EST 2015 INFO: [UDP] Received a UDP request to retrieve Aymeric's account
+Sun Nov 01 10:14:44 EST 2015 INFO: [UDP] Received a UDP request to create an account for Aymeric
+Sun Nov 01 10:14:44 EST 2015 INFO: Thread #12 CREATED account for Aymeric
+Sun Nov 01 10:14:44 EST 2015 INFO: new account created for Aymeric (account #6)
+Sun Nov 01 10:14:44 EST 2015 INFO: [UDP] Received a UDP request for Aymeric to obtain a new loan of 100$
+Sun Nov 01 10:14:44 EST 2015 INFO: new Loan accepted for Aymeric (100$), current credit: 100$
+Sun Nov 01 10:16:10 EST 2015 INFO: Thread #1 CREATED account for Alex
+Sun Nov 01 10:16:10 EST 2015 INFO: new account created for Alex (account #2)
+Sun Nov 01 10:16:10 EST 2015 INFO: Thread #1 CREATED account for Justin
+Sun Nov 01 10:16:10 EST 2015 INFO: new account created for Justin (account #3)
+Sun Nov 01 10:16:10 EST 2015 INFO: Thread #1 CREATED account for Maria
+Sun Nov 01 10:16:10 EST 2015 INFO: new account created for Maria (account #4)
+Sun Nov 01 10:16:10 EST 2015 INFO: Thread #1 CREATED account for Pascal
+Sun Nov 01 10:16:10 EST 2015 INFO: new account created for Pascal (account #5)
+Sun Nov 01 10:16:34 EST 2015 INFO: [UDP] Received a UDP request to get Aymeric's credit line
+Sun Nov 01 10:16:34 EST 2015 INFO: Aymeric Grail doesn't have a credit record at our bank
+Sun Nov 01 10:16:42 EST 2015 INFO: [UDP] Received a UDP request to retrieve Aymeric's account
+Sun Nov 01 10:16:42 EST 2015 INFO: [UDP] Received a UDP request to create an account for Aymeric
+Sun Nov 01 10:16:42 EST 2015 INFO: Thread #10 CREATED account for Aymeric
+Sun Nov 01 10:16:42 EST 2015 INFO: new account created for Aymeric (account #6)
+Sun Nov 01 10:16:42 EST 2015 INFO: [UDP] Received a UDP request for Aymeric to obtain a new loan of 100$
+Sun Nov 01 10:16:42 EST 2015 INFO: new Loan accepted for Aymeric (100$), current credit: 100$
+Sun Nov 01 10:52:12 EST 2015 INFO: Thread #1 CREATED account for Alex
+Sun Nov 01 10:52:12 EST 2015 INFO: new account created for Alex (account #2)
+Sun Nov 01 10:52:12 EST 2015 INFO: Thread #1 CREATED account for Justin
+Sun Nov 01 10:52:12 EST 2015 INFO: new account created for Justin (account #3)
+Sun Nov 01 10:52:12 EST 2015 INFO: Thread #1 CREATED account for Maria
+Sun Nov 01 10:52:12 EST 2015 INFO: new account created for Maria (account #4)
+Sun Nov 01 10:52:12 EST 2015 INFO: Thread #1 CREATED account for Pascal
+Sun Nov 01 10:52:12 EST 2015 INFO: new account created for Pascal (account #5)
+Sun Nov 01 11:05:29 EST 2015 INFO: [UDP] Received a UDP request to get Aymeric's credit line
+Sun Nov 01 11:05:29 EST 2015 INFO: Aymeric Grail doesn't have a credit record at our bank
+Sun Nov 01 11:05:37 EST 2015 INFO: [UDP] Received a UDP request to retrieve Alex's account
+Sun Nov 01 11:05:37 EST 2015 INFO: [UDP] Received a UDP request for Alex to obtain a new loan of 200$
+Sun Nov 01 11:05:37 EST 2015 INFO: new Loan accepted for Alex (200$), current credit: 200$
+Sun Nov 01 11:06:01 EST 2015 INFO: Server returned 4 customers info
+Sun Nov 01 11:06:47 EST 2015 INFO: [UDP] Received a UDP request to retrieve Aymeric's account
+Sun Nov 01 11:06:47 EST 2015 INFO: [UDP] Received a UDP request to create an account for Aymeric
+Sun Nov 01 11:06:47 EST 2015 INFO: Thread #10 CREATED account for Aymeric
+Sun Nov 01 11:06:47 EST 2015 INFO: new account created for Aymeric (account #6)
+Sun Nov 01 11:06:47 EST 2015 INFO: [UDP] Received a UDP request for Aymeric to obtain a new loan of 100$
+Sun Nov 01 11:06:47 EST 2015 INFO: new Loan accepted for Aymeric (100$), current credit: 100$

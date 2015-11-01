@@ -451,3 +451,119 @@ Sat Oct 31 23:24:42 EDT 2015 INFO: new account created for Sylvain (account #5)
 Sat Oct 31 23:24:59 EDT 2015 INFO: Thread #13 CREATED account for Aymeric
 Sat Oct 31 23:24:59 EDT 2015 INFO: new account created for Aymeric (account #6)
 Sat Oct 31 23:25:42 EDT 2015 INFO: new Loan accepted for Aymeric (100$), current credit: 100$
+Sun Nov 01 08:43:07 EST 2015 INFO: Thread #1 CREATED account for Alex
+Sun Nov 01 08:43:07 EST 2015 INFO: new account created for Alex (account #2)
+Sun Nov 01 08:43:07 EST 2015 INFO: Thread #1 CREATED account for Justin
+Sun Nov 01 08:43:07 EST 2015 INFO: new account created for Justin (account #3)
+Sun Nov 01 08:43:07 EST 2015 INFO: Thread #1 CREATED account for Maria
+Sun Nov 01 08:43:07 EST 2015 INFO: new account created for Maria (account #4)
+Sun Nov 01 08:43:07 EST 2015 INFO: Thread #1 CREATED account for Sylvain
+Sun Nov 01 08:43:07 EST 2015 INFO: new account created for Sylvain (account #5)
+Sun Nov 01 08:45:53 EST 2015 INFO: new Loan accepted for Alex (100$), current credit: 300$
+Sun Nov 01 08:47:14 EST 2015 INFO: Thread #1 CREATED account for Alex
+Sun Nov 01 08:47:14 EST 2015 INFO: new account created for Alex (account #2)
+Sun Nov 01 08:47:14 EST 2015 INFO: Thread #1 CREATED account for Justin
+Sun Nov 01 08:47:14 EST 2015 INFO: new account created for Justin (account #3)
+Sun Nov 01 08:47:14 EST 2015 INFO: Thread #1 CREATED account for Maria
+Sun Nov 01 08:47:14 EST 2015 INFO: new account created for Maria (account #4)
+Sun Nov 01 08:47:14 EST 2015 INFO: Thread #1 CREATED account for Sylvain
+Sun Nov 01 08:47:14 EST 2015 INFO: new account created for Sylvain (account #5)
+Sun Nov 01 08:47:32 EST 2015 INFO: Thread #13 CREATED account for Aymeric
+Sun Nov 01 08:47:32 EST 2015 INFO: new account created for Aymeric (account #6)
+Sun Nov 01 08:48:25 EST 2015 INFO: new Loan accepted for Aymeric (100$), current credit: 100$
+Sun Nov 01 08:53:18 EST 2015 INFO: new Loan accepted for Aymeric (100$), current credit: 200$
+Sun Nov 01 08:55:29 EST 2015 INFO: new Loan accepted for Aymeric (100$), current credit: 300$
+Sun Nov 01 08:55:49 EST 2015 INFO: new Loan accepted for Aymeric (100$), current credit: 300$
+Sun Nov 01 09:01:43 EST 2015 INFO: Thread #1 CREATED account for Alex
+Sun Nov 01 09:01:43 EST 2015 INFO: new account created for Alex (account #2)
+Sun Nov 01 09:01:43 EST 2015 INFO: Thread #1 CREATED account for Justin
+Sun Nov 01 09:01:43 EST 2015 INFO: new account created for Justin (account #3)
+Sun Nov 01 09:01:43 EST 2015 INFO: Thread #1 CREATED account for Maria
+Sun Nov 01 09:01:43 EST 2015 INFO: new account created for Maria (account #4)
+Sun Nov 01 09:01:43 EST 2015 INFO: Thread #1 CREATED account for Sylvain
+Sun Nov 01 09:01:43 EST 2015 INFO: new account created for Sylvain (account #5)
+Sun Nov 01 09:02:04 EST 2015 INFO: Thread #13 CREATED account for Aymeric
+Sun Nov 01 09:02:04 EST 2015 INFO: new account created for Aymeric (account #6)
+Sun Nov 01 09:02:09 EST 2015 INFO: new Loan accepted for Aymeric (100$), current credit: 100$
+Sun Nov 01 09:03:41 EST 2015 INFO: This Account already exists for Aymeric
+Sun Nov 01 09:04:02 EST 2015 INFO: new Loan accepted for Aymeric (100$), current credit: 200$
+Sun Nov 01 09:04:58 EST 2015 ERROR: Could not either get or create an acount at bank National, for user aymeric.grail@gmail.com.
+Sun Nov 01 09:15:24 EST 2015 INFO: Thread #1 CREATED account for Alex
+Sun Nov 01 09:15:24 EST 2015 INFO: new account created for Alex (account #2)
+Sun Nov 01 09:15:24 EST 2015 INFO: Thread #1 CREATED account for Justin
+Sun Nov 01 09:15:24 EST 2015 INFO: new account created for Justin (account #3)
+Sun Nov 01 09:15:24 EST 2015 INFO: Thread #1 CREATED account for Maria
+Sun Nov 01 09:15:24 EST 2015 INFO: new account created for Maria (account #4)
+Sun Nov 01 09:15:24 EST 2015 INFO: Thread #1 CREATED account for Sylvain
+Sun Nov 01 09:15:24 EST 2015 INFO: new account created for Sylvain (account #5)
+Sun Nov 01 09:15:57 EST 2015 INFO: Thread #13 CREATED account for Aymeric
+Sun Nov 01 09:15:57 EST 2015 INFO: new account created for Aymeric (account #6)
+Sun Nov 01 09:16:02 EST 2015 INFO: new Loan accepted for Aymeric (100$), current credit: 100$
+Sun Nov 01 09:16:27 EST 2015 INFO: This Account already exists for Aymeric
+Sun Nov 01 09:16:35 EST 2015 INFO: new Loan accepted for Aymeric (100$), current credit: 200$
+Sun Nov 01 09:17:07 EST 2015 ERROR: Could not create loan at bank National, for current loan #4.
+Sun Nov 01 09:28:31 EST 2015 INFO: Thread #1 CREATED account for Alex
+Sun Nov 01 09:28:31 EST 2015 INFO: new account created for Alex (account #2)
+Sun Nov 01 09:28:31 EST 2015 INFO: Thread #1 CREATED account for Justin
+Sun Nov 01 09:28:31 EST 2015 INFO: new account created for Justin (account #3)
+Sun Nov 01 09:28:31 EST 2015 INFO: Thread #1 CREATED account for Maria
+Sun Nov 01 09:28:31 EST 2015 INFO: new account created for Maria (account #4)
+Sun Nov 01 09:28:31 EST 2015 INFO: Thread #1 CREATED account for Sylvain
+Sun Nov 01 09:28:31 EST 2015 INFO: new account created for Sylvain (account #5)
+Sun Nov 01 09:28:41 EST 2015 INFO: Thread #13 CREATED account for Aymeric
+Sun Nov 01 09:28:41 EST 2015 INFO: new account created for Aymeric (account #6)
+Sun Nov 01 09:28:46 EST 2015 INFO: new Loan accepted for Aymeric (100$), current credit: 100$
+Sun Nov 01 09:29:01 EST 2015 INFO: This Account already exists for Aymeric
+Sun Nov 01 09:29:05 EST 2015 INFO: [UDP] Received a UDP request to get Aymeric's credit line
+Sun Nov 01 09:29:25 EST 2015 ERROR: Could not create loan at bank National, for current loan #3.
+Sun Nov 01 09:57:38 EST 2015 INFO: Thread #1 CREATED account for Alex
+Sun Nov 01 09:57:38 EST 2015 INFO: new account created for Alex (account #2)
+Sun Nov 01 09:57:38 EST 2015 INFO: Thread #1 CREATED account for Justin
+Sun Nov 01 09:57:38 EST 2015 INFO: new account created for Justin (account #3)
+Sun Nov 01 09:57:38 EST 2015 INFO: Thread #1 CREATED account for Maria
+Sun Nov 01 09:57:38 EST 2015 INFO: new account created for Maria (account #4)
+Sun Nov 01 09:57:38 EST 2015 INFO: Thread #1 CREATED account for Sylvain
+Sun Nov 01 09:57:38 EST 2015 INFO: new account created for Sylvain (account #5)
+Sun Nov 01 09:57:47 EST 2015 INFO: Thread #13 CREATED account for Aymeric
+Sun Nov 01 09:57:47 EST 2015 INFO: new account created for Aymeric (account #6)
+Sun Nov 01 09:57:52 EST 2015 INFO: new Loan accepted for Aymeric (100$), current credit: 200$
+Sun Nov 01 09:58:02 EST 2015 ERROR: Could not delete loan #3 AFTER transfer.
+Sun Nov 01 10:13:40 EST 2015 INFO: Thread #1 CREATED account for Alex
+Sun Nov 01 10:13:40 EST 2015 INFO: new account created for Alex (account #2)
+Sun Nov 01 10:13:40 EST 2015 INFO: Thread #1 CREATED account for Justin
+Sun Nov 01 10:13:40 EST 2015 INFO: new account created for Justin (account #3)
+Sun Nov 01 10:13:40 EST 2015 INFO: Thread #1 CREATED account for Maria
+Sun Nov 01 10:13:40 EST 2015 INFO: new account created for Maria (account #4)
+Sun Nov 01 10:13:40 EST 2015 INFO: Thread #1 CREATED account for Sylvain
+Sun Nov 01 10:13:40 EST 2015 INFO: new account created for Sylvain (account #5)
+Sun Nov 01 10:14:13 EST 2015 INFO: Thread #15 CREATED account for Aymeric
+Sun Nov 01 10:14:13 EST 2015 INFO: new account created for Aymeric (account #6)
+Sun Nov 01 10:14:21 EST 2015 INFO: new Loan accepted for Aymeric (100$), current credit: 200$
+Sun Nov 01 10:15:33 EST 2015 ERROR: Could not delete loan #3 AFTER transfer.
+Sun Nov 01 10:16:12 EST 2015 INFO: Thread #1 CREATED account for Alex
+Sun Nov 01 10:16:12 EST 2015 INFO: new account created for Alex (account #2)
+Sun Nov 01 10:16:12 EST 2015 INFO: Thread #1 CREATED account for Justin
+Sun Nov 01 10:16:12 EST 2015 INFO: new account created for Justin (account #3)
+Sun Nov 01 10:16:12 EST 2015 INFO: Thread #1 CREATED account for Maria
+Sun Nov 01 10:16:12 EST 2015 INFO: new account created for Maria (account #4)
+Sun Nov 01 10:16:12 EST 2015 INFO: Thread #1 CREATED account for Sylvain
+Sun Nov 01 10:16:12 EST 2015 INFO: new account created for Sylvain (account #5)
+Sun Nov 01 10:16:20 EST 2015 INFO: Thread #13 CREATED account for Aymeric
+Sun Nov 01 10:16:20 EST 2015 INFO: new account created for Aymeric (account #6)
+Sun Nov 01 10:16:30 EST 2015 INFO: This Account already exists for Aymeric
+Sun Nov 01 10:16:34 EST 2015 INFO: new Loan accepted for Aymeric (100$), current credit: 200$
+Sun Nov 01 10:52:14 EST 2015 INFO: Thread #1 CREATED account for Alex
+Sun Nov 01 10:52:14 EST 2015 INFO: new account created for Alex (account #2)
+Sun Nov 01 10:52:14 EST 2015 INFO: Thread #1 CREATED account for Justin
+Sun Nov 01 10:52:14 EST 2015 INFO: new account created for Justin (account #3)
+Sun Nov 01 10:52:14 EST 2015 INFO: Thread #1 CREATED account for Maria
+Sun Nov 01 10:52:14 EST 2015 INFO: new account created for Maria (account #4)
+Sun Nov 01 10:52:14 EST 2015 INFO: Thread #1 CREATED account for Sylvain
+Sun Nov 01 10:52:14 EST 2015 INFO: new account created for Sylvain (account #5)
+Sun Nov 01 10:52:36 EST 2015 INFO: Due date for loan #2 changed to 01-12-2016
+Sun Nov 01 10:52:41 EST 2015 INFO: Server returned 4 customers info
+Sun Nov 01 11:05:23 EST 2015 INFO: Thread #13 CREATED account for Aymeric
+Sun Nov 01 11:05:23 EST 2015 INFO: new account created for Aymeric (account #6)
+Sun Nov 01 11:05:29 EST 2015 INFO: new Loan accepted for Aymeric (100$), current credit: 200$
+Sun Nov 01 11:06:18 EST 2015 INFO: Server returned 5 customers info
+Sun Nov 01 11:07:11 EST 2015 INFO: Server returned 5 customers info
