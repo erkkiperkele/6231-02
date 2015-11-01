@@ -138,6 +138,13 @@ public class BankService implements IBankService {
 
             externalLoan = tryTransferLoan(loanId, otherBank, loan, externalAccount);
             tryDeleteLoan(loanId, loan, customer);
+
+            SessionService.getInstance().log().info(
+                    String.format("%1$s transferred loan #%2$d to Bank: %3$s",
+                            customer.getFirstName(),
+                            loanId,
+                            otherBank.name())
+            );
         }
         finally{
             LockFactory.getInstance().writeUnlock(customer.getUserName());
@@ -162,7 +169,6 @@ public class BankService implements IBankService {
 
         verifyPassword(accountNumber, password, customer);
         Loan newLoan = createLoan(loanAmount, account, customer, 0);
-
         return newLoan;
     }
 

@@ -5,9 +5,9 @@ import Data.Bank;
 import Data.Customer;
 import Data.CustomerInfo;
 import Data.Loan;
+import Exceptions.RecordNotFoundException;
 import Services.BankService;
 import Services.SessionService;
-import Exceptions.RecordNotFoundException;
 
 import javax.security.auth.login.FailedLoginException;
 import java.text.DateFormat;
@@ -25,11 +25,11 @@ public class BankServiceTest {
 
         String serverArg = args.length == 0
                 ? "1"
-                :args[0];
+                : args[0];
 
         initialize(serverArg);
 
-        //Server tests
+        //Make sure servers are running before running tests.
         runTests();
     }
 
@@ -51,24 +51,24 @@ public class BankServiceTest {
 
         try {
             String unknownUsername = "dummy@dummy.com";
-        Customer unknown = bankService.getCustomer(unknownUsername, "aa");
-        printCustomer(unknown, unknownUsername);
+            Customer unknown = bankService.getCustomer(unknownUsername, "aa");
+            printCustomer(unknown, unknownUsername);
 
-        String mariaUsername = "maria.etinger@gmail.com";
-        Customer maria = bankService.getCustomer(mariaUsername, "aa");
-        printCustomer(maria, mariaUsername);
+            String mariaUsername = "maria.etinger@gmail.com";
+            Customer maria = bankService.getCustomer(mariaUsername, "aa");
+            printCustomer(maria, mariaUsername);
 
-        String justinUsername = "justin.paquette@gmail.com";
-        Customer justin = bankService.getCustomer(justinUsername, "aa");
-        printCustomer(justin, justinUsername);
+            String justinUsername = "justin.paquette@gmail.com";
+            Customer justin = bankService.getCustomer(justinUsername, "aa");
+            printCustomer(justin, justinUsername);
 
-        String alexUserName = "alex.emond@gmail.com";
-        Customer alex = null;
+            String alexUserName = "alex.emond@gmail.com";
+            Customer alex = null;
             alex = bankService.getCustomer(alexUserName, "aa");
-        printCustomer(alex, alexUserName);
+            printCustomer(alex, alexUserName);
 
-        List<Loan> alexLoans = bankService.getLoans(alex.getAccountNumber());
-        printLoans(alexLoans, alex.getFirstName());
+            List<Loan> alexLoans = bankService.getLoans(alex.getAccountNumber());
+            printLoans(alexLoans, alex.getFirstName());
 
         } catch (FailedLoginException e) {
             e.printStackTrace();
