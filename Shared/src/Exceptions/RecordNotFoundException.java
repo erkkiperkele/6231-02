@@ -1,4 +1,4 @@
-package Transport.RMI;
+package Exceptions;
 
 /**
  * A simple exception class to indicate to the client that the

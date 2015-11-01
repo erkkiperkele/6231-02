@@ -33,7 +33,7 @@ public abstract class BankServerPOA extends org.omg.PortableServer.Servant
             final org.omg.CORBA.portable.ResponseHandler handler)
     {
 
-        if (opName.equals("TransferLoan")) {
+        if (opName.equals("transferLoan")) {
                 return _invoke_TransferLoan(_is, handler);
         } else if (opName.equals("delayPayment")) {
                 return _invoke_delayPayment(_is, handler);
@@ -201,7 +201,7 @@ public abstract class BankServerPOA extends org.omg.PortableServer.Servant
 
         try
         {
-            Transport.Corba.BankServerPackage.Loan _arg_result = TransferLoan(arg0_in, arg1_in, arg2_in);
+            Transport.Corba.BankServerPackage.Loan _arg_result = transferLoan(arg0_in, arg1_in, arg2_in);
 
             _output = handler.createReply();
             Transport.Corba.BankServerPackage.LoanHelper.write(_output,_arg_result);

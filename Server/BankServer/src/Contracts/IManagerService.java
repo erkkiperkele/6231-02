@@ -2,7 +2,7 @@ package Contracts;
 
 import Data.Bank;
 import Data.CustomerInfo;
-import Transport.RMI.RecordNotFoundException;
+import Exceptions.RecordNotFoundException;
 
 import javax.security.auth.login.FailedLoginException;
 import java.util.Date;

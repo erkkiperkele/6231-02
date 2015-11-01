@@ -43,9 +43,9 @@ public interface BankServerOperations
         throws Transport.Corba.BankServerPackage.FailedLoginException;
 
     /**
-     * Operation TransferLoan
+     * Operation transferLoan
      */
-    public Transport.Corba.BankServerPackage.Loan TransferLoan(short LoanId, Transport.Corba.BankServerPackage.Bank CurrentBank, Transport.Corba.BankServerPackage.Bank OtherBank)
+    public Transport.Corba.BankServerPackage.Loan transferLoan(short LoanId, Transport.Corba.BankServerPackage.Bank CurrentBank, Transport.Corba.BankServerPackage.Bank OtherBank)
         throws Transport.Corba.BankServerPackage.TransferException;
 
 }

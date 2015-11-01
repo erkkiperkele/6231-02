@@ -2,10 +2,9 @@ package Contracts;
 
 import Data.Bank;
 import Data.CustomerInfo;
-import Transport.RMI.RecordNotFoundException;
+import Exceptions.RecordNotFoundException;
 
 import javax.security.auth.login.FailedLoginException;
-import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.Date;
 

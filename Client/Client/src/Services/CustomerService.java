@@ -6,6 +6,7 @@ import Contracts.ICustomerService;
 import Data.Bank;
 import Data.Customer;
 import Data.Loan;
+import Exceptions.TransferException;
 import Transport.BankClientCorba;
 
 import javax.security.auth.login.FailedLoginException;
@@ -80,6 +81,18 @@ public class CustomerService implements ICustomerService {
         try {
             newLoan = this.clients[bank.toInt() - 1].getLoan(bank, accountNumber, password, loanAmount);
         } catch (FailedLoginException e) {
+            SessionService.getInstance().log().error(e.getMessage());
+            e.printStackTrace();
+        }
+        return newLoan;
+    }
+
+    @Override
+    public Loan transferLoan(int loanId, Bank currentBank, Bank otherBank) {
+        Loan newLoan = null;
+        try {
+            newLoan = this.clients[currentBank.toInt() - 1].transferLoan(loanId, currentBank, otherBank);
+        } catch (TransferException e) {
             SessionService.getInstance().log().error(e.getMessage());
             e.printStackTrace();
         }

@@ -366,9 +366,9 @@ public class _BankServerStub extends org.omg.CORBA.portable.ObjectImpl
     }
 
     /**
-     * Operation TransferLoan
+     * Operation transferLoan
      */
-    public Transport.Corba.BankServerPackage.Loan TransferLoan(short LoanId, Transport.Corba.BankServerPackage.Bank CurrentBank, Transport.Corba.BankServerPackage.Bank OtherBank)
+    public Transport.Corba.BankServerPackage.Loan transferLoan(short LoanId, Transport.Corba.BankServerPackage.Bank CurrentBank, Transport.Corba.BankServerPackage.Bank OtherBank)
         throws Transport.Corba.BankServerPackage.TransferException
     {
         while(true)
@@ -378,7 +378,7 @@ public class _BankServerStub extends org.omg.CORBA.portable.ObjectImpl
                 org.omg.CORBA.portable.InputStream _input = null;
                 try
                 {
-                    org.omg.CORBA.portable.OutputStream _output = this._request("TransferLoan",true);
+                    org.omg.CORBA.portable.OutputStream _output = this._request("transferLoan",true);
                     _output.write_short(LoanId);
                     Transport.Corba.BankServerPackage.BankHelper.write(_output,CurrentBank);
                     Transport.Corba.BankServerPackage.BankHelper.write(_output,OtherBank);
@@ -407,13 +407,13 @@ public class _BankServerStub extends org.omg.CORBA.portable.ObjectImpl
             }
             else
             {
-                org.omg.CORBA.portable.ServantObject _so = _servant_preinvoke("TransferLoan",_opsClass);
+                org.omg.CORBA.portable.ServantObject _so = _servant_preinvoke("transferLoan",_opsClass);
                 if (_so == null)
                    continue;
                 Transport.Corba.LoanManager.BankServerOperations _self = (Transport.Corba.LoanManager.BankServerOperations) _so.servant;
                 try
                 {
-                    return _self.TransferLoan(LoanId, CurrentBank,  OtherBank);
+                    return _self.transferLoan(LoanId, CurrentBank, OtherBank);
                 }
                 finally
                 {

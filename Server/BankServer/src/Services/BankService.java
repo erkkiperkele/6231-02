@@ -2,7 +2,7 @@ package Services;
 
 import Contracts.IBankService;
 import Data.*;
-import Transport.RMI.RecordNotFoundException;
+import Exceptions.RecordNotFoundException;
 import Transport.UDP.GetLoanMessage;
 import Transport.UDP.Serializer;
 import Transport.UDP.UDPClient;

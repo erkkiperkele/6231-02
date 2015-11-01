@@ -1,8 +1,8 @@
 package Data;
 
+import Exceptions.RecordNotFoundException;
 import Services.LockFactory;
 import Services.SessionService;
-import Transport.RMI.RecordNotFoundException;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;

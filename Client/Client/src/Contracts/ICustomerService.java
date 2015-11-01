@@ -3,6 +3,7 @@ package Contracts;
 import Data.Bank;
 import Data.Customer;
 import Data.Loan;
+import Exceptions.TransferException;
 
 import javax.security.auth.login.FailedLoginException;
 
@@ -56,4 +57,16 @@ public interface ICustomerService {
      */
     Loan getLoan(Bank bank, int accountNumber, String password, long loanAmount);
 
+    /**
+     * Requests the server to transfer a loan from a bank to another.
+     * If the current user does not have an account at the other bank, the account will be created.
+     * The transfer is transactional. If any of the required operation fails, all prior operations will
+     * be rolled back.
+     * @param loanId of the loan at the current bank
+     * @param currentBank the current customer's bank where the loan is from
+     * @param otherBank the new bank the loan is transferred to
+     * @return the new loan created at the other bank
+     * @throws TransferException
+     */
+    Loan transferLoan(int loanId, Bank currentBank, Bank otherBank);
 }

@@ -37,8 +37,10 @@ public class CustomerConsole {
 
         String message = String.format(
                 "Please chose an option:"
-                        + "%1$s 1: Open an account"
-                        + "%1$s 2: Get Loan"
+                        + "%1$s 1: Sign in"
+                        + "%1$s 2: Open an account"
+                        + "%1$s 3: Get Loan"
+                        + "%1$s 4: Transfer Loan"
                         + "%1$s Press any other key to exit."
                 , console.newLine());
 
@@ -52,10 +54,16 @@ public class CustomerConsole {
 
         switch (choice) {
             case '1':
-                displayOpenAccount();
+                displaySignin();
                 break;
             case '2':
+                displayOpenAccount();
+                break;
+            case '3':
                 displayGetLoan();
+                break;
+            case '4':
+                displayTransferLoan();
                 break;
             default:
                 console.println("See you!");
@@ -66,7 +74,6 @@ public class CustomerConsole {
     }
 
     private static void displayGetLoan() {
-        displaySignin();
 
         Customer customer = SessionService.getInstance().getCurrentCustomer();
         long loanAmount = askLoanAmount();
@@ -82,6 +89,37 @@ public class CustomerConsole {
         else{
             SessionService.getInstance().log().warn(
                     String.format("New loan refused for an amount of %1$s $ (check your credit line)", loanAmount)
+            );
+        }
+    }
+
+    private static void displayTransferLoan() {
+
+        Customer customer = SessionService.getInstance().getCurrentCustomer();
+
+        int loanId = askLoanId();
+        Bank currentBank = customer.getBank();
+        Bank newBank = askNewBank();
+
+
+        SessionService.getInstance().log().info(
+                String.format("Requested to transfer loan #%1$d from %2$s to %3$s", loanId, currentBank, newBank)
+        );
+        Loan newLoan = transferLoan(loanId, currentBank, newBank);
+
+        if (newLoan != null) {
+            SessionService.getInstance().log().info(
+                    String.format("loan #%1$s successfully transferred to bank %2$s as loan #%3$s",
+                            loanId,
+                            newBank.name(),
+                            newLoan.getLoanNumber())
+            );
+        }
+        else{
+            SessionService.getInstance().log().error(
+                    String.format("An error has occurred while transferring the loan #%1$s to bank %2$s, please try again.",
+                            loanId,
+                            newBank.name())
             );
         }
     }
@@ -206,6 +244,30 @@ public class CustomerConsole {
         return answer;
     }
 
+    private static int askLoanId() {
+        console.println("Enter loanId");
+        int userAnswer = console.readint();
+        int answer = userAnswer == 0
+                ? 2
+                : userAnswer;
+
+        displayAnswer(String.valueOf(answer));
+        return answer;
+    }
+
+    private static Bank askNewBank() {
+
+        console.println("Chose the bank where to transfer the loan");
+        console.println(String.format("(1 - %1$s, 2 - %2$s, 3 %3$s): ", Bank.Royal, Bank.National, Bank.Dominion));
+        int userAnswer = console.readint();
+        Bank answer = userAnswer == 0
+                ? Bank.National
+                : Bank.fromInt(userAnswer);
+
+        displayAnswer(answer.toString());
+        return answer;
+    }
+
     private static int openAccount(
             Bank bankId,
             String firstName,
@@ -224,6 +286,10 @@ public class CustomerConsole {
             String password,
             long loanAmount) {
         return customerService.getLoan(bankId, accountNumber, password, loanAmount);
+    }
+
+    private static Loan transferLoan(int loanId, Bank currentBank, Bank newBank) {
+        return customerService.transferLoan(loanId, currentBank, newBank);
     }
 
     private static void displayAnswer(String answer) {

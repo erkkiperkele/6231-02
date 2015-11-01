@@ -7,7 +7,7 @@ import Data.CustomerInfo;
 import Data.Loan;
 import Services.BankService;
 import Services.SessionService;
-import Transport.RMI.RecordNotFoundException;
+import Exceptions.RecordNotFoundException;
 
 import javax.security.auth.login.FailedLoginException;
 import java.text.DateFormat;

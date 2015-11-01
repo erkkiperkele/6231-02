@@ -6,7 +6,7 @@ import Data.CustomerInfo;
 import Transport.Corba.BankServerPackage.*;
 import Transport.Corba.Helpers.ObjectMapper;
 import Transport.Corba.LoanManager.BankServerPOA;
-import Transport.RMI.RecordNotFoundException;
+import Exceptions.RecordNotFoundException;
 
 import javax.security.auth.login.FailedLoginException;
 
@@ -97,8 +97,11 @@ public class BankServerCorba extends BankServerPOA {
         }
     }
 
+    //TODO: Real implementation!
     @Override
-    public Loan TransferLoan(short LoanId, Bank CurrentBank, Bank OtherBank) throws TransferException {
-        return null;
+    public Loan transferLoan(short LoanId, Bank CurrentBank, Bank OtherBank) throws TransferException {
+
+        short loanId = -1;
+        return new Loan(loanId, loanId, -1, new Date());
     }
 }

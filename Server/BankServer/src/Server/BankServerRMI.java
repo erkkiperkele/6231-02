@@ -5,7 +5,7 @@ import Data.Bank;
 import Data.Customer;
 import Data.CustomerInfo;
 import Data.Loan;
-import Transport.RMI.RecordNotFoundException;
+import Exceptions.RecordNotFoundException;
 
 import javax.security.auth.login.FailedLoginException;
 import java.rmi.Remote;
